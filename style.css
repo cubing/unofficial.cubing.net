@@ -2,7 +2,7 @@
 
 html {
   font-family: -apple-system, Roboto, Ubuntu, Tahoma, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   padding: 2em;
   display: grid;
   justify-content: center;
@@ -71,6 +71,30 @@ tbody td:nth-child(8),
 tbody td:nth-child(9) {
   font-size: 0.75em;
 }
+
+@media (min-width: 45rem) {
+
+  body.toggle-attempts td:nth-child(5),
+  body.toggle-attempts td:nth-child(6),
+  body.toggle-attempts td:nth-child(7),
+  body.toggle-attempts td:nth-child(8),
+  body.toggle-attempts td:nth-child(9) {
+    display: none;
+  }
+}
+
+
+@media (max-width: 45rem) {
+
+  body:not(.toggle-attempts) td:nth-child(5),
+  body:not(.toggle-attempts) td:nth-child(6),
+  body:not(.toggle-attempts) td:nth-child(7),
+  body:not(.toggle-attempts) td:nth-child(8),
+  body:not(.toggle-attempts) td:nth-child(9) {
+    display: none;
+  }
+}
+
 
 .cubing-icon {
   font-size: 2em;
