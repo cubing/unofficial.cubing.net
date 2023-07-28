@@ -1,0 +1,59 @@
+@import "https://cdn.cubing.net/css/@cubing/icons";
+
+html {
+  font-family: -apple-system, Roboto, Ubuntu, Tahoma, sans-serif;
+  font-size: 1.25rem;
+  padding: 2em;
+  display: grid;
+  justify-content: center;
+
+  --background-color: white;
+  background-color: var(--background-color);
+  --text-color: black;
+  color: var(--text-color);
+}
+
+body {
+  width: 100%;
+  max-width: 40em;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --background-color: #000D;
+    --text-color: #EEE;
+  }
+
+  a {
+    color: #669df5;
+  }
+
+  a:visited {
+    color: #af73d5;
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid var(--text-color);
+  padding: 0.5em;
+  text-align: right;
+}
+
+thead td {
+  text-align: center;
+  font-weight: bold;
+}
+
+thead,
+tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.cubing-icon {
+  font-size: 2em;
+}
