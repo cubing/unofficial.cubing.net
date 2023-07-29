@@ -99,7 +99,7 @@ h3 {
 
 .content {
   width: 100%;
-  max-width: 40em;
+  max-width: 50em;
   padding: 0 2em 4em;
   display: flex;
   flex-direction: column;
@@ -152,7 +152,7 @@ table.results thead td {
   color: white;
 }
 
-table.results thead td:nth-child(4) {
+table.results thead td:nth-child(5) {
   text-align: center;
 }
 
@@ -172,21 +172,26 @@ table.results td:nth-child(3) {
 }
 
 
-table.results tbody td:nth-child(4),
 table.results tbody td:nth-child(5),
 table.results tbody td:nth-child(6),
 table.results tbody td:nth-child(7),
-table.results tbody td:nth-child(8) {
+table.results tbody td:nth-child(8),
+table.results tbody td:nth-child(9) {
   font-size: 0.75em;
 }
 
 @media (max-width: 45em) {
 
-  body:not(.show-full-info) table.results td:nth-child(4),
+  .content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
   body:not(.show-full-info) table.results td:nth-child(5),
   body:not(.show-full-info) table.results td:nth-child(6),
   body:not(.show-full-info) table.results td:nth-child(7),
-  body:not(.show-full-info) table.results td:nth-child(8) {
+  body:not(.show-full-info) table.results td:nth-child(8),
+  body:not(.show-full-info) table.results td:nth-child(9) {
     display: none
   }
 
@@ -235,6 +240,14 @@ table.results tbody td:nth-child(8) {
 
   body.show-full-info table.results tbody td:nth-child(3)::after {
     content: "\0000a0avg"
+  }
+
+  body.show-full-info table.results tbody td:nth-child(4) {
+    grid-column: 1 / 6;
+  }
+
+  body.show-full-info table.results tbody td:nth-child(4)::after {
+    content: "\0000a0best"
   }
 
 }
