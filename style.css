@@ -109,7 +109,7 @@ thead td {
 }
 
 tr:nth-child(even) {
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--translucent-accent-color);
 }
 
 /* Name */
@@ -139,38 +139,48 @@ tbody td:nth-child(9) {
     display: none;
   }
 
-  table tbody,
-  table {
+  table,
+  tbody {
     width: 100%;
   }
 
   tr {
+    border: var(--thick-border) solid var(--text-color);
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin-bottom: 1em;
   }
 
-  td:nth-child(1)::before {
-    content: "Rank\0000a0"
-  }
-
-  td:nth-child(2) {
-    grid-column: 2 / 5;
+  tbody td {
     text-align: center;
   }
 
-  td:nth-child(3)::after {
+  tbody td:nth-child(1)::before {
+    content: "Rank\0000a0"
+  }
+
+  tbody td:nth-child(1) {
+    grid-column: 1 / 2;
+  }
+
+  tbody td:nth-child(2) {
+    grid-column: 2 / 6;
+    text-align: center;
+    max-width: inherit;
+  }
+
+  tbody td:nth-child(3) {
+    grid-column: 1 / 6;
+  }
+
+  tbody td:nth-child(3)::after {
     content: "\0000a0avg"
   }
 
-  td:nth-child(1),
-  td:nth-child(2),
-  td:nth-child(3) {
+  /* tbody td:nth-child(3) {
     border-bottom-width: var(--thick-border);
     border-bottom-style: double;
-  }
-
-
+  } */
 }
 
 
