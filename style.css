@@ -13,7 +13,7 @@ html {
   --text-color: black;
   color: var(--text-color);
 
-  --thick-border: 3px;
+  --thick-border: 4px;
 }
 
 body {
@@ -102,14 +102,18 @@ td {
 }
 
 thead td {
-  text-align: center;
+  text-align: right;
   font-weight: bold;
   border-bottom-width: var(--thick-border);
   background-color: var(--translucent-accent-color);
 }
 
+thead td:nth-child(4) {
+  text-align: center;
+}
+
 tr:nth-child(even) {
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--translucent-accent-color);
 }
 
 /* Name */
@@ -123,38 +127,77 @@ td:nth-child(3) {
   font-weight: bold;
 }
 
+
 tbody td:nth-child(4),
 tbody td:nth-child(5),
 tbody td:nth-child(6),
 tbody td:nth-child(7),
-tbody td:nth-child(8),
-tbody td:nth-child(9) {
+tbody td:nth-child(8) {
   font-size: 0.75em;
 }
 
-@media (min-width: 45rem) {
+@media (max-width: 45em) {
 
-  body.toggle-attempts td:nth-child(5),
-  body.toggle-attempts td:nth-child(6),
-  body.toggle-attempts td:nth-child(7),
-  body.toggle-attempts td:nth-child(8),
-  body.toggle-attempts td:nth-child(9) {
+  body:not(.show-full-info) td:nth-child(4),
+  body:not(.show-full-info) td:nth-child(5),
+  body:not(.show-full-info) td:nth-child(6),
+  body:not(.show-full-info) td:nth-child(7),
+  body:not(.show-full-info) td:nth-child(8) {
+    display: none
+  }
+
+
+  body.show-full-info table thead {
     display: none;
   }
 
-  .narrow-only {
-    display: none;
+  body.show-full-info table,
+  body.show-full-info tbody {
+    width: 100%;
   }
+
+  body.show-full-info tbody {
+    border-top: var(--thick-border) solid var(--text-color);
+  }
+
+  body.show-full-info tr {
+    border: var(--thick-border) solid var(--text-color);
+    border-top: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  body.show-full-info tbody td {
+    text-align: center;
+  }
+
+  body.show-full-info tbody td:nth-child(1)::before {
+    content: "Rank\0000a0";
+  }
+
+  body.show-full-info tbody td:nth-child(1) {
+    grid-column: 1 / 2;
+  }
+
+  body.show-full-info tbody td:nth-child(2) {
+    grid-column: 2 / 6;
+    text-align: center;
+    max-width: inherit;
+    grid-row: 1 / 2;
+  }
+
+  body.show-full-info tbody td:nth-child(3) {
+    grid-column: 1 / 6;
+  }
+
+  body.show-full-info tbody td:nth-child(3)::after {
+    content: "\0000a0avg"
+  }
+
 }
 
-
-@media (max-width: 45rem) {
-
-  body:not(.toggle-attempts) td:nth-child(5),
-  body:not(.toggle-attempts) td:nth-child(6),
-  body:not(.toggle-attempts) td:nth-child(7),
-  body:not(.toggle-attempts) td:nth-child(8),
-  body:not(.toggle-attempts) td:nth-child(9) {
+@media not all and (max-width: 45em) {
+  .narrow-only {
     display: none;
   }
 }
