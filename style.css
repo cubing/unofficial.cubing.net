@@ -52,7 +52,8 @@ body.red {
   color: white;
 }
 
-.header a {
+.header a,
+.header a:visited {
   color: white;
   text-decoration: none;
   white-space: nowrap;
