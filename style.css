@@ -127,61 +127,66 @@ tbody td:nth-child(4),
 tbody td:nth-child(5),
 tbody td:nth-child(6),
 tbody td:nth-child(7),
-tbody td:nth-child(8),
-tbody td:nth-child(9) {
+tbody td:nth-child(8) {
   font-size: 0.75em;
 }
 
+@media (max-width: 45em) {
 
-@media (max-width: 45rem) {
-
-  table thead {
-    display: none;
+  tbody td:nth-child(4),
+  tbody td:nth-child(5),
+  tbody td:nth-child(6),
+  tbody td:nth-child(7),
+  tbody td:nth-child(8) {
+    display: none
   }
+}
 
-  table,
-  tbody {
-    width: 100%;
-  }
+body.expand-tables table thead {
+  display: none;
+}
 
-  tr {
-    border: var(--thick-border) solid var(--text-color);
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    margin-bottom: 1em;
-  }
+body.expand-tables table,
+body.expand-tables tbody {
+  width: 100%;
+}
 
-  tbody td {
-    text-align: center;
-  }
+body.expand-tables tbody {
+  border-top: var(--thick-border) solid var(--text-color);
+}
 
-  tbody td:nth-child(1)::before {
-    content: "Rank\0000a0";
-  }
+body.expand-tables tr {
+  border: var(--thick-border) solid var(--text-color);
+  border-top: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
 
-  tbody td:nth-child(1) {
-    grid-column: 1 / 2;
-  }
+body.expand-tables tbody td {
+  text-align: center;
+}
 
-  tbody td:nth-child(2) {
-    grid-column: 2 / 6;
-    text-align: center;
-    max-width: inherit;
-    grid-row: 1 / 2;
-  }
+body.expand-tables tbody td:nth-child(1)::before {
+  content: "Rank\0000a0";
+}
 
-  tbody td:nth-child(3) {
-    grid-column: 1 / 6;
-  }
+body.expand-tables tbody td:nth-child(1) {
+  grid-column: 1 / 2;
+}
 
-  tbody td:nth-child(3)::after {
-    content: "\0000a0avg"
-  }
+body.expand-tables tbody td:nth-child(2) {
+  grid-column: 2 / 6;
+  text-align: center;
+  max-width: inherit;
+  grid-row: 1 / 2;
+}
 
-  /* tbody td:nth-child(3) {
-    border-bottom-width: var(--thick-border);
-    border-bottom-style: double;
-  } */
+body.expand-tables tbody td:nth-child(3) {
+  grid-column: 1 / 6;
+}
+
+body.expand-tables tbody td:nth-child(3)::after {
+  content: "\0000a0avg"
 }
 
 
