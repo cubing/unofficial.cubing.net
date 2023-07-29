@@ -23,12 +23,24 @@ body {
   align-items: center;
   flex-direction: column;
   --accent-color: #4285f4;
+  --translucent-accent-color: #4285f466;
+  /* blue (default) */
 }
 
 body.orange {
   --accent-color: #f95b2a;
+  --translucent-accent-color: #f95b2a66;
 }
 
+body.green {
+  --accent-color: #0d904f;
+  --translucent-accent-color: #0d904f66;
+}
+
+body.red {
+  --accent-color: #ce2e20;
+  --translucent-accent-color: #ce2e2066;
+}
 
 .header {
   align-self: stretch;
@@ -93,9 +105,9 @@ thead td {
   text-align: center;
   font-weight: bold;
   border-bottom-width: var(--thick-border);
+  background-color: var(--translucent-accent-color);
 }
 
-thead,
 tr:nth-child(even) {
   background: rgba(0, 0, 0, 0.1);
 }
