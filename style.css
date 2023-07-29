@@ -1,8 +1,56 @@
+/******** Cubing icons ********/
+
 @import "https://cdn.cubing.net/css/@cubing/icons";
+
+.cubing-icon {
+  font-size: 2em;
+}
+
+.cubing-icon.large {
+  font-size: 4em;
+}
+
+/******** General utility ********/
+
+.center {
+  text-align: center;
+}
 
 * {
   box-sizing: border-box;
 }
+
+@media not all and (max-width: 45em) {
+  .narrow-only {
+    display: none;
+  }
+}
+
+
+/******** Theme color ********/
+
+body,
+body.blue {
+  --accent-color: #4285f4;
+  --translucent-accent-color: #4285f466;
+}
+
+body.orange {
+  --accent-color: #f95b2a;
+  --translucent-accent-color: #f95b2a66;
+}
+
+body.green {
+  --accent-color: #0d904f;
+  --translucent-accent-color: #0d904f66;
+}
+
+body.red {
+  --accent-color: #ce2e20;
+  --translucent-accent-color: #ce2e2066;
+}
+
+/******** Main layout ********/
 
 html {
   font-family: -apple-system, Roboto, Ubuntu, Tahoma, sans-serif;
@@ -22,24 +70,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  --accent-color: #4285f4;
-  --translucent-accent-color: #4285f466;
-  /* blue (default) */
-}
-
-body.orange {
-  --accent-color: #f95b2a;
-  --translucent-accent-color: #f95b2a66;
-}
-
-body.green {
-  --accent-color: #0d904f;
-  --translucent-accent-color: #0d904f66;
-}
-
-body.red {
-  --accent-color: #ce2e20;
-  --translucent-accent-color: #ce2e2066;
 }
 
 .header {
@@ -76,6 +106,17 @@ h3 {
   align-items: stretch;
 }
 
+table.listing {
+  border-collapse: collapse;
+}
+
+table.listing td {
+  border: 1px solid var(--text-color);
+  padding: 1em;
+}
+
+/******** Dark mode ********/
+
 @media (prefers-color-scheme: dark) {
   html {
     --background-color: #000D;
@@ -91,126 +132,108 @@ h3 {
   }
 }
 
-table {
+/******** Results table ********/
+
+table.results {
   border-collapse: collapse;
 }
 
-td {
+table.results td {
   border: 1px solid var(--text-color);
   padding: 0.3em 0.4em;
   text-align: right;
 }
 
-thead td {
+table.results thead td {
   text-align: right;
   font-weight: bold;
   border-bottom-width: var(--thick-border);
   background-color: var(--translucent-accent-color);
 }
 
-thead td:nth-child(4) {
+table.results thead td:nth-child(4) {
   text-align: center;
 }
 
-tr:nth-child(even) {
+table.results tr:nth-child(even) {
   background: var(--translucent-accent-color);
 }
 
 /* Name */
-tbody td:nth-child(2) {
+table.results tbody td:nth-child(2) {
   max-width: 30em;
 }
 
 /* Average */
-thead,
-td:nth-child(3) {
+table.results thead,
+table.results td:nth-child(3) {
   font-weight: bold;
 }
 
 
-tbody td:nth-child(4),
-tbody td:nth-child(5),
-tbody td:nth-child(6),
-tbody td:nth-child(7),
-tbody td:nth-child(8) {
+table.results tbody td:nth-child(4),
+table.results tbody td:nth-child(5),
+table.results tbody td:nth-child(6),
+table.results tbody td:nth-child(7),
+table.results tbody td:nth-child(8) {
   font-size: 0.75em;
 }
 
 @media (max-width: 45em) {
 
-  body:not(.show-full-info) td:nth-child(4),
-  body:not(.show-full-info) td:nth-child(5),
-  body:not(.show-full-info) td:nth-child(6),
-  body:not(.show-full-info) td:nth-child(7),
-  body:not(.show-full-info) td:nth-child(8) {
+  body:not(.show-full-info) table.results td:nth-child(4),
+  body:not(.show-full-info) table.results td:nth-child(5),
+  body:not(.show-full-info) table.results td:nth-child(6),
+  body:not(.show-full-info) table.results td:nth-child(7),
+  body:not(.show-full-info) table.results td:nth-child(8) {
     display: none
   }
 
-
-  body.show-full-info table thead {
+  body.show-full-info table.results thead {
     display: none;
   }
 
-  body.show-full-info table,
-  body.show-full-info tbody {
+  body.show-full-info table.results,
+  body.show-full-info table.results tbody {
     width: 100%;
   }
 
-  body.show-full-info tbody {
+  body.show-full-info table.results tbody {
     border-top: var(--thick-border) solid var(--text-color);
   }
 
-  body.show-full-info tr {
+  body.show-full-info table.results tr {
     border: var(--thick-border) solid var(--text-color);
     border-top: none;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
   }
 
-  body.show-full-info tbody td {
+  body.show-full-info table.results tbody td {
     text-align: center;
   }
 
-  body.show-full-info tbody td:nth-child(1)::before {
+  body.show-full-info table.results tbody td:nth-child(1)::before {
     content: "Rank\0000a0";
   }
 
-  body.show-full-info tbody td:nth-child(1) {
+  body.show-full-info table.results tbody td:nth-child(1) {
     grid-column: 1 / 2;
   }
 
-  body.show-full-info tbody td:nth-child(2) {
+  body.show-full-info table.results tbody td:nth-child(2) {
     grid-column: 2 / 6;
     text-align: center;
     max-width: inherit;
     grid-row: 1 / 2;
   }
 
-  body.show-full-info tbody td:nth-child(3) {
+  body.show-full-info table.results tbody td:nth-child(3) {
     grid-column: 1 / 6;
   }
 
-  body.show-full-info tbody td:nth-child(3)::after {
+  body.show-full-info table.results tbody td:nth-child(3)::after {
     content: "\0000a0avg"
   }
 
-}
-
-@media not all and (max-width: 45em) {
-  .narrow-only {
-    display: none;
-  }
-}
-
-
-.cubing-icon {
-  font-size: 2em;
-}
-
-.cubing-icon.large {
-  font-size: 4em;
-}
-
-.center {
-  text-align: center;
 }
