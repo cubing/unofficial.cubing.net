@@ -1,11 +1,12 @@
 @import "https://cdn.cubing.net/css/@cubing/icons";
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: -apple-system, Roboto, Ubuntu, Tahoma, sans-serif;
   font-size: 1.1rem;
-  padding: 2em;
-  display: grid;
-  justify-content: center;
 
   --background-color: white;
   background-color: var(--background-color);
@@ -16,9 +17,50 @@ html {
 }
 
 body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  --accent-color: #4285f4;
+}
+
+body.orange {
+  --accent-color: #f95b2a;
+}
+
+
+.header {
+  align-self: stretch;
+  background: var(--accent-color);
+  padding: 0.5em;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+h3 {
+  text-align: center;
+}
+
+.content {
   width: 100%;
   max-width: 40em;
-  margin: 0;
+  padding: 0 2em 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -81,6 +123,10 @@ tbody td:nth-child(9) {
   body.toggle-attempts td:nth-child(9) {
     display: none;
   }
+
+  .narrow-only {
+    display: none;
+  }
 }
 
 
@@ -98,4 +144,12 @@ tbody td:nth-child(9) {
 
 .cubing-icon {
   font-size: 2em;
+}
+
+.cubing-icon.large {
+  font-size: 4em;
+}
+
+.center {
+  text-align: center;
 }
