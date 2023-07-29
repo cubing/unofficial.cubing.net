@@ -102,10 +102,14 @@ td {
 }
 
 thead td {
-  text-align: center;
+  text-align: right;
   font-weight: bold;
   border-bottom-width: var(--thick-border);
   background-color: var(--translucent-accent-color);
+}
+
+thead td:nth-child(4) {
+  text-align: center;
 }
 
 tr:nth-child(even) {
@@ -123,6 +127,7 @@ td:nth-child(3) {
   font-weight: bold;
 }
 
+
 tbody td:nth-child(4),
 tbody td:nth-child(5),
 tbody td:nth-child(6),
@@ -133,60 +138,68 @@ tbody td:nth-child(8) {
 
 @media (max-width: 45em) {
 
-  tbody td:nth-child(4),
-  tbody td:nth-child(5),
-  tbody td:nth-child(6),
-  tbody td:nth-child(7),
-  tbody td:nth-child(8) {
+  body:not(.show-full-info) td:nth-child(4),
+  body:not(.show-full-info) td:nth-child(5),
+  body:not(.show-full-info) td:nth-child(6),
+  body:not(.show-full-info) td:nth-child(7),
+  body:not(.show-full-info) td:nth-child(8) {
     display: none
   }
+
+
+  body.show-full-info table thead {
+    display: none;
+  }
+
+  body.show-full-info table,
+  body.show-full-info tbody {
+    width: 100%;
+  }
+
+  body.show-full-info tbody {
+    border-top: var(--thick-border) solid var(--text-color);
+  }
+
+  body.show-full-info tr {
+    border: var(--thick-border) solid var(--text-color);
+    border-top: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  body.show-full-info tbody td {
+    text-align: center;
+  }
+
+  body.show-full-info tbody td:nth-child(1)::before {
+    content: "Rank\0000a0";
+  }
+
+  body.show-full-info tbody td:nth-child(1) {
+    grid-column: 1 / 2;
+  }
+
+  body.show-full-info tbody td:nth-child(2) {
+    grid-column: 2 / 6;
+    text-align: center;
+    max-width: inherit;
+    grid-row: 1 / 2;
+  }
+
+  body.show-full-info tbody td:nth-child(3) {
+    grid-column: 1 / 6;
+  }
+
+  body.show-full-info tbody td:nth-child(3)::after {
+    content: "\0000a0avg"
+  }
+
 }
 
-body.expand-tables table thead {
-  display: none;
-}
-
-body.expand-tables table,
-body.expand-tables tbody {
-  width: 100%;
-}
-
-body.expand-tables tbody {
-  border-top: var(--thick-border) solid var(--text-color);
-}
-
-body.expand-tables tr {
-  border: var(--thick-border) solid var(--text-color);
-  border-top: none;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-}
-
-body.expand-tables tbody td {
-  text-align: center;
-}
-
-body.expand-tables tbody td:nth-child(1)::before {
-  content: "Rank\0000a0";
-}
-
-body.expand-tables tbody td:nth-child(1) {
-  grid-column: 1 / 2;
-}
-
-body.expand-tables tbody td:nth-child(2) {
-  grid-column: 2 / 6;
-  text-align: center;
-  max-width: inherit;
-  grid-row: 1 / 2;
-}
-
-body.expand-tables tbody td:nth-child(3) {
-  grid-column: 1 / 6;
-}
-
-body.expand-tables tbody td:nth-child(3)::after {
-  content: "\0000a0avg"
+@media not all and (max-width: 45em) {
+  .narrow-only {
+    display: none;
+  }
 }
 
 
