@@ -148,7 +148,8 @@ table.results thead td {
   text-align: right;
   font-weight: bold;
   border-bottom-width: var(--thick-border);
-  background-color: var(--translucent-accent-color);
+  background-color: var(--accent-color);
+  color: white;
 }
 
 table.results thead td:nth-child(4) {
