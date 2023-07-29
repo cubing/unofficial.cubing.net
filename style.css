@@ -99,7 +99,6 @@ td {
   border: 1px solid var(--text-color);
   padding: 0.3em 0.4em;
   text-align: right;
-  white-space: nowrap;
 }
 
 thead td {
@@ -113,6 +112,12 @@ tr:nth-child(even) {
   background: rgba(0, 0, 0, 0.1);
 }
 
+/* Name */
+tbody td:nth-child(2) {
+  max-width: 30em;
+}
+
+/* Average */
 thead,
 td:nth-child(3) {
   font-weight: bold;
