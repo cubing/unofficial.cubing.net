@@ -1,3 +1,15 @@
+.PHONY: setup
+setup:
+	bun install
+
+.PHONY: lint
+lint:
+	bunx rome check ./
+
+.PHONY: format
+format:
+	bunx rome format ./
+
 SFTP_PATH = "towns.dreamhost.com:~/unofficial.cubing.net/"
 URL       = "https://unofficial.cubing.net/"
 
