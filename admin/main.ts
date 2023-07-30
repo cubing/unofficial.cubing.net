@@ -12,6 +12,7 @@ export type EventMetadata = { team?: boolean; formatID: FormatID };
 // TODO: decouple formats from events
 const events: Record<string, EventMetadata> = {
   fto: { formatID: FormatID.AverageOf5 },
+  magic: { formatID: FormatID.AverageOf5 },
   "333-team-bld": {
     team: true,
     formatID: FormatID.BestOf3,
