@@ -150,15 +150,18 @@ class CompetitorRoundResult {
     // );
 
     for (let i = 0; i < this.attempts.length; i++) {
+      const td = tr.appendChild(doc.createElement("td"));
       let s = this.attempts[i].toString();
       if (formatInfo.rankedByBest) {
         if (![bestIdx].includes(i)) {
           s = `(${s})`;
+          td.classList.add("not-counted-in-average");
         }
       } else if ([bestIdx, worstIdx].includes(i)) {
         s = `(${s})`;
+        td.classList.add("not-counted-in-average");
       }
-      tr.appendChild(doc.createElement("td")).textContent = s;
+      td.textContent = s;
     }
     console.log(tr.textContent);
     return tr;

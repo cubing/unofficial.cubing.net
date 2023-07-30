@@ -260,3 +260,7 @@ table.results tbody td:nth-child(9) {
   }
 
 }
+
+.not-counted-in-average {
+  opacity: 0.5;
+}
