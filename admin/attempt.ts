@@ -62,29 +62,37 @@ export enum FormatID {
   MeanOf3 = "mo3",
 }
 
-const formats: FormatID[] = [
+export const formats: FormatID[] = [
   FormatID.AverageOf5,
   FormatID.BestOf3,
   FormatID.MeanOf3,
 ];
-const formatInfos: Record<
+export const formatInfos: Record<
   FormatID,
-  { numAttempts: number; averageName: string; rankedByBest: boolean }
+  {
+    numAttempts: number;
+    averageName: string;
+    rankedByBest: boolean;
+    description: string;
+  }
 > = {
   [FormatID.AverageOf5]: {
     numAttempts: 5,
     averageName: "Average",
     rankedByBest: false,
+    description: "Average of 5",
   },
   [FormatID.BestOf3]: {
     numAttempts: 3,
     averageName: "Mean",
     rankedByBest: true,
+    description: "Best of 3",
   },
   [FormatID.MeanOf3]: {
     numAttempts: 3,
     averageName: "Mean",
     rankedByBest: false,
+    description: "Mean of 3",
   },
 };
 
@@ -133,8 +141,8 @@ class CompetitorRoundResult {
       tr.appendChild(doc.createElement("td")).textContent =
         // rome-ignore lint/style/noNonNullAssertion: TODO: make invalid states unrepresentable
         this.averageResult!.toString();
-        tr.appendChild(doc.createElement("td")).textContent =
-          this.bestResult.toString();
+      tr.appendChild(doc.createElement("td")).textContent =
+        this.bestResult.toString();
     }
 
     const idx = new Array(formatInfo.numAttempts).fill(0).map((_, i) => i);
@@ -189,7 +197,7 @@ export class RoundResults {
         attempts.push(TimeResult.fromString(attemptStr));
       }
 
-      let averageResult = TimeResult.fromString(row.average);
+      const averageResult = TimeResult.fromString(row.average);
 
       const competitorRoundResult: CompetitorRoundResult =
         new CompetitorRoundResult(
@@ -232,7 +240,7 @@ export class RoundResults {
     table.classList.add("results");
     table.classList.add(`num-attempts-${formatInfo.numAttempts}`);
     if (formatInfos[this.eventMetadata.formatID].rankedByBest) {
-      table.classList.add("ranked-by-best")
+      table.classList.add("ranked-by-best");
     }
 
     const thead = table.appendChild(doc.createElement("thead"));
