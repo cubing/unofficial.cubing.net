@@ -238,16 +238,25 @@ table.results tbody td:nth-child(9) {
     grid-column: 1 / 6;
   }
 
-  body.show-full-info table.results tbody td:nth-child(3)::after {
-    content: "\0000a0avg"
-  }
-
   body.show-full-info table.results tbody td:nth-child(4) {
     grid-column: 1 / 6;
   }
 
+  body.show-full-info table.results tbody td:nth-child(3)::after {
+    content: "\0000a0average"
+  }
+
   body.show-full-info table.results tbody td:nth-child(4)::after {
     content: "\0000a0best"
+  }
+
+
+  body.show-full-info table.results.ranked-by-best tbody td:nth-child(3)::after {
+    content: "\0000a0best"
+  }
+
+  body.show-full-info table.results.ranked-by-best tbody td:nth-child(4)::after {
+    content: "\0000a0average"
   }
 
 }

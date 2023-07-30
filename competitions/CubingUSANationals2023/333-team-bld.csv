@@ -1,0 +1,54 @@
+rank,name,attempt1,attempt2,attempt3,t1,t2,t3,average,best
+1,Calix Tang & Tommy Cherry,8.19,DNF,DNF,8.19,DNF,DNF,DNF,8.19
+2,Patrick Ponce & Eva Kato,18.13,14.22,12.84,18.13,14.22,12.84,15.06,12.84
+3,Daniel Greigg & Liam Chen,18.02,26.80,27.22,18.02,26.80,27.22,24.01,18.02
+4,Luke Garrett & Max Siauw,32.79,31.20,24.53,32.79,31.20,24.53,29.51,24.53
+5,Ethan Davis & Timothy Castle,DNF,DNF,28.39,DNF,DNF,28.39,DNF,28.39
+6,Carter Thomas & Henry Lichner,30.78,30.36,36.72,30.78,30.36,36.72,32.62,30.36
+7,Parker Powell & Jared Balassaitis,51.25,1:13.72,31.76,51.25,73.72,31.76,52.24,31.76
+8,Braden Richards & Zeke Mackay,1:07.69,51.78,32.01,67.69,51.78,32.01,50.49,32.01
+9,Dylan Govic & Tyler Rose,41.09,35.22,32.13,41.09,35.22,32.13,36.15,32.13
+10,Owen Widdis & Krish Shah-Nathwani,33.48,37.90,DNF,33.48,37.90,DNF,DNF,33.48
+11,Nathan Phillips & Emma Phillips,34.32,42.55,DNF,34.32,42.55,DNF,DNF,34.32
+12,Brandon Lin & Keaton Ellis,35.76,39.63,40.27,35.76,39.63,40.27,38.55,35.76
+13,Alex Bohac & Keon Wilson,59.73,55.82,36.48,59.73,55.82,36.48,50.68,36.48
+14,Sonja Black & Ash Black,46.35,51.09,36.69,46.35,51.09,36.69,44.71,36.69
+15,Shaun Mack & Graham Lively,37.05,1:00.34,1:19.47,37.05,60.34,79.47,58.95,37.05
+16,Owen Brooks & Alexander Persaud,57.80,1:28.61,38.21,57.80,88.61,38.21,61.54,38.21
+17,Nathan Rahn & Joseph Ong,38.86,40.08,38.23,38.86,40.08,38.23,39.06,38.23
+18,Ashten Jampayas & David F. Andron Silva,50.49,48.29,38.97,50.49,48.29,38.97,45.92,38.97
+19,Andrew Mao & Michael Mao,39.12,47.61,50.17,39.12,47.61,50.17,45.63,39.12
+20,Evan Wright & Jack Bohning,41.42,48.18,48.33,41.42,48.18,48.33,45.98,41.42
+21,Blake Thompson & Eric Zhao,1:01.98,46.44,42.17,61.98,46.44,42.17,50.20,42.17
+22,Katie Hull & Jacob Ambrose,42.82,57.50,54.50,42.82,57.50,54.50,51.61,42.82
+23,Bashy Carrillo & Sean Cutshaw,49.64,1:13.05,43.74,49.64,73.05,43.74,55.48,43.74
+24,Zachary Ridall & Rafik Eskandar,48.75,44.76,1:10.02,48.75,44.76,70.02,54.51,44.76
+25,Dominic Redisi & Michael Conard,1:24.81,1:16.07,46.32,84.81,76.07,46.32,69.07,46.32
+26,Matthew Dickman & Shane Grogan,47.92,48.71,48.34,47.92,48.71,48.34,48.32,47.92
+27,Adam Schwenn & Lucas Lippman-Bruno,1:03.63,54.77,49.16,63.63,54.77,49.16,55.85,49.16
+28,Tamar Ozsvath & Nina Ozsvath,1:07.86,1:25.00,49.89,67.86,85,49.89,67.58,49.89
+29,Carter Williams & Gabriel Garber Burd,57.60,58.84,49.96,57.60,58.84,49.96,55.47,49.96
+30,Dylan cossin & Jack Pfeifer,50.78,DNF,DNS,50.78,DNF,DNS,DNF,50.78
+31,Wesley Chase & Peter Didden,52.21,1:23.06,1:11.05,52.21,83.06,71.05,68.77,52.21
+32,Daniel Goodman & Justin Sui,55.94,53.31,DNF,55.94,53.31,DNF,DNF,53.31
+33,Benjamin Graber & Faiz Wareh,1:14.10,57.72,1:25.70,74.1,57.72,85.7,72.51,57.72
+34,Eliana Ozsvath & Mariana Lee,1:01.53,1:28.19,58.07,61.53,88.19,58.07,69.26,58.07
+35,Elijah Brown & Aedan Bryant,1:24.34,1:16.71,59.32,84.34,76.71,59.32,73.46,59.32
+36,Ryland Wilson & Ben MacGregor,1:21.09,1:00.13,1:16.05,81.09,60.13,76.05,72.42,60.13
+37,Tyler Kochy & Sameer Sethuram,1:00.34,1:07.96,1:04.75,60.34,67.96,64.75,64.35,60.34
+38,Keenan Darkins & Carson Miller,1:08.69,1:40.99,1:02.28,68.69,100.99,62.28,77.32,62.28
+39,Brayden Adams & Ryan Schell,1:02.91,1:02.91,1:03.63,62.91,62.91,63.63,63.15,62.91
+40,Alex Aguayo & Luke Ripperger,1:06.17,1:10.72,1:27.49,66.17,70.72,87.49,74.79,66.17
+41,Andrew Joshua & Jared Buske-Fehrle,1:48.21,1:34.53,1:07.88,108.21,94.53,67.88,90.21,67.88
+42,Conan Mo & Andrew Clippinger,1:08.29,DNF,DNF,68.29,DNF,DNF,DNF,68.29
+43,Ant Irizarry & Ashley Gray,1:23.95,1:28.35,1:08.88,83.95,88.35,68.88,80.39,68.88
+44,John Wanger II & Junior Solis,1:25.40,1:16.80,1:09.26,85.4,76.8,69.26,77.15,69.26
+45,Carter Bitz & Ben Tibbetts,1:10.41,1:30.25,DNF,70.41,90.25,DNF,DNF,70.41
+46,Sebastian Morber & Ellery Dillon,1:28.69,DNF,1:13.24,88.69,DNF,73.24,DNF,73.24
+47,Ledger Ramirez & Catherine Trace,1:49.60,1:18.18,1:43.18,109.6,78.18,103.18,96.99,78.18
+48,Easan Peacock & Alexander Rossi,2:00.19,1:42.71,1:22.55,120.19,102.71,82.55,101.82,82.55
+49,Dev Choksi & Oliver Hettrich,2:02.32,1:30.63,1:53.94,122.32,90.63,113.94,108.96,90.63
+50,Vishwa Sankar & Kevin Min Nicolas Sanchez,1:37.30,1:43.79,1:37.64,97.3,103.79,97.64,99.58,97.30
+51,Stone Simpson & Dean Lockett,2:22.47,1:47.35,1:37.76,142.47,107.35,97.76,115.86,97.76
+52,Ekansh Agrawal & Hunter Coleman,DNF,1:59.84,DNF,DNF,119.84,DNF,DNF,119.84
+53,Aiden Owens & Daniel Pszenny,2:19.33,2:12.63,2:08.51,139.33,132.63,128.51,133.49,128.51

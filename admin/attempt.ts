@@ -1,5 +1,5 @@
 import { exit } from "process";
-import { CSVColumn } from "./main";
+import { CSVColumn, EventMetadata } from "./main";
 import { formatTime } from "./vendor/timer-db";
 
 export const DNF_VALUE = -1;
@@ -19,6 +19,9 @@ export class TimeResult {
       case "-2":
       case "DNS":
         return new TimeResult(DNS_VALUE);
+    }
+    if (!s) {
+      throw new Error();
     }
     const match = s.match(TimeRegex);
     if (!match) {
@@ -55,33 +58,33 @@ export class TimeResult {
 
 export enum FormatID {
   AverageOf5 = "avg5",
-  MeanOf3 = "mo3",
   BestOf3 = "bo3",
+  MeanOf3 = "mo3",
 }
 
 const formats: FormatID[] = [
   FormatID.AverageOf5,
-  FormatID.MeanOf3,
   FormatID.BestOf3,
+  FormatID.MeanOf3,
 ];
-const formatInfo: Record<
+const formatInfos: Record<
   FormatID,
-  { numAttempts: number; theadName: string; rankedByBest: boolean }
+  { numAttempts: number; averageName: string; rankedByBest: boolean }
 > = {
   [FormatID.AverageOf5]: {
     numAttempts: 5,
-    theadName: "Average",
-    rankedByBest: false,
-  },
-  [FormatID.MeanOf3]: {
-    numAttempts: 3,
-    theadName: "Mean",
+    averageName: "Average",
     rankedByBest: false,
   },
   [FormatID.BestOf3]: {
     numAttempts: 3,
-    theadName: "Best",
+    averageName: "Mean",
     rankedByBest: true,
+  },
+  [FormatID.MeanOf3]: {
+    numAttempts: 3,
+    averageName: "Mean",
+    rankedByBest: false,
   },
 };
 
@@ -110,36 +113,54 @@ class CompetitorRoundResult {
     public averageResult: TimeResult | undefined,
     public bestResult: TimeResult,
     public attempts: TimeResult[],
+    public eventMetadata: EventMetadata,
   ) {}
 
-  toHTML(doc: Document, formatID: FormatID): HTMLTableRowElement {
+  toHTML(doc: Document): HTMLTableRowElement {
+    const formatInfo = formatInfos[this.eventMetadata.formatID];
     const tr = doc.createElement("tr");
     tr.appendChild(doc.createElement("td")).textContent = this.rank.toString();
     tr.appendChild(doc.createElement("td")).appendChild(
       this.competitorInfo.toHTML(doc),
     );
-    if (!formatInfo[formatID].rankedByBest) {
+    if (formatInfo.rankedByBest) {
+      tr.appendChild(doc.createElement("td")).textContent =
+        this.bestResult.toString();
       tr.appendChild(doc.createElement("td")).textContent =
         // rome-ignore lint/style/noNonNullAssertion: TODO: make invalid states unrepresentable
         this.averageResult!.toString();
+    } else {
+      tr.appendChild(doc.createElement("td")).textContent =
+        // rome-ignore lint/style/noNonNullAssertion: TODO: make invalid states unrepresentable
+        this.averageResult!.toString();
+        tr.appendChild(doc.createElement("td")).textContent =
+          this.bestResult.toString();
     }
-    tr.appendChild(doc.createElement("td")).textContent =
-      this.bestResult.toString();
 
-    const idx = new Array(formatInfo[formatID].numAttempts)
-      .fill(0)
-      .map((_, i) => i);
+    const idx = new Array(formatInfo.numAttempts).fill(0).map((_, i) => i);
     idx.sort((i, j) => this.attempts[i].compare(this.attempts[j]));
     const bestIdx = idx[0];
     const worstIdx = idx.at(-1);
+    // console.log(
+    //   formatID,
+    //   this.attempts.map((v) => v.resultTotalMs),
+    //   idx,
+    //   bestIdx,
+    //   formatInfo[formatID].rankedByBest,
+    // );
 
     for (let i = 0; i < this.attempts.length; i++) {
       let s = this.attempts[i].toString();
-      if ([bestIdx, worstIdx].includes(i)) {
+      if (formatInfo.rankedByBest) {
+        if (![bestIdx].includes(i)) {
+          s = `(${s})`;
+        }
+      } else if ([bestIdx, worstIdx].includes(i)) {
         s = `(${s})`;
       }
       tr.appendChild(doc.createElement("td")).textContent = s;
     }
+    console.log(tr.textContent);
     return tr;
   }
 }
@@ -147,25 +168,16 @@ class CompetitorRoundResult {
 export class RoundResults {
   formatID: FormatID;
   competitorRoundResults: CompetitorRoundResult[] = [];
-  constructor(data: CSVColumn[]) {
+  constructor(data: CSVColumn[], public eventMetadata: EventMetadata) {
+    const formatInfo = formatInfos[eventMetadata.formatID]; // TODO
     if (data.length === 0) {
       console.error("Error: Round with 0 results!");
       exit(1);
     }
 
-    for (const format of formats) {
-      if (format in data[0]) {
-        this.formatID = format;
-      }
-    }
-    if (!this.formatID) {
-      console.error("Error: Round did not have a valid format!");
-      exit(1);
-    }
-
     for (const row of data) {
       const attempts: TimeResult[] = [];
-      for (let i = 1; i <= formatInfo[this.formatID].numAttempts; i++) {
+      for (let i = 1; i <= formatInfo.numAttempts; i++) {
         const attemptStr = row[`attempt${i}`];
         if (!attemptStr) {
           console.error(`Attempt #${i} missing for competitor: ${row.name}`);
@@ -174,11 +186,7 @@ export class RoundResults {
         attempts.push(TimeResult.fromString(attemptStr));
       }
 
-      let averageResult: TimeResult | undefined;
-      if (!formatInfo[this.formatID].rankedByBest) {
-        // rome-ignore lint/suspicious/noExplicitAny: TODO
-        averageResult = TimeResult.fromString(row[this.formatID as any]);
-      }
+      let averageResult = TimeResult.fromString(row.average);
 
       const competitorRoundResult: CompetitorRoundResult =
         new CompetitorRoundResult(
@@ -187,23 +195,31 @@ export class RoundResults {
           averageResult,
           TimeResult.fromString(row.best),
           attempts,
+          eventMetadata,
         );
       this.competitorRoundResults.push(competitorRoundResult);
     }
   }
 
   theadHTML(doc: Document): HTMLTableRowElement {
+    const formatInfo = formatInfos[this.eventMetadata.formatID]; // TODO
     const tr = doc.createElement("tr");
     tr.appendChild(doc.createElement("td")).textContent = "Rank";
-    tr.appendChild(doc.createElement("td")).textContent = "Competitor";
-    if (!formatInfo[this.formatID].rankedByBest) {
+    tr.appendChild(doc.createElement("td")).textContent = `Competitor${
+      this.eventMetadata.team ? "s" : ""
+    }`;
+    if (!formatInfo.rankedByBest) {
       tr.appendChild(doc.createElement("td")).textContent =
-        formatInfo[this.formatID].theadName;
+        formatInfo.averageName;
     }
     tr.appendChild(doc.createElement("td")).textContent = "Best";
+    if (formatInfo.rankedByBest) {
+      tr.appendChild(doc.createElement("td")).textContent =
+        formatInfo.averageName;
+    }
     const attempts = tr.appendChild(doc.createElement("td"));
     attempts.textContent = "Attempts";
-    attempts.colSpan = formatInfo[this.formatID].numAttempts;
+    attempts.colSpan = formatInfo.numAttempts;
     return tr;
   }
 
@@ -211,13 +227,16 @@ export class RoundResults {
     const table = doc.createElement("table");
     table.classList.add("results");
     table.classList.add(this.formatID);
+    if (formatInfos[this.eventMetadata.formatID].rankedByBest) {
+      table.classList.add("ranked-by-best")
+    }
 
     const thead = table.appendChild(doc.createElement("thead"));
     thead.appendChild(this.theadHTML(doc));
 
     const tbody = table.appendChild(doc.createElement("tbody"));
     for (const competitorRoundResult of this.competitorRoundResults) {
-      tbody.appendChild(competitorRoundResult.toHTML(doc, this.formatID));
+      tbody.appendChild(competitorRoundResult.toHTML(doc));
     }
     return table;
   }
