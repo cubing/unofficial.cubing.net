@@ -227,9 +227,10 @@ export class RoundResults {
   }
 
   toHTML(doc: Document): HTMLTableElement {
+    const formatInfo = formatInfos[this.eventMetadata.formatID]; // TODO
     const table = doc.createElement("table");
     table.classList.add("results");
-    table.classList.add(this.formatID);
+    table.classList.add(`num-attempts-${formatInfo.numAttempts}`);
     if (formatInfos[this.eventMetadata.formatID].rankedByBest) {
       table.classList.add("ranked-by-best")
     }

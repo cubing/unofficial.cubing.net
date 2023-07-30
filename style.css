@@ -215,6 +215,11 @@ table.results tbody td:nth-child(9) {
     grid-template-columns: repeat(5, 1fr);
   }
 
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tr {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   body.show-full-info table.results tbody td {
     text-align: center;
   }
@@ -234,12 +239,27 @@ table.results tbody td:nth-child(9) {
     grid-row: 1 / 2;
   }
 
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tbody td:nth-child(2) {
+    grid-column: 2 / 4;
+  }
+
   body.show-full-info table.results tbody td:nth-child(3) {
     grid-column: 1 / 6;
   }
 
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tbody td:nth-child(3) {
+    grid-column: 1 / 4;
+  }
+
   body.show-full-info table.results tbody td:nth-child(4) {
     grid-column: 1 / 6;
+  }
+
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tbody td:nth-child(4) {
+    grid-column: 1 / 4;
   }
 
   body.show-full-info table.results tbody td:nth-child(3)::after {
