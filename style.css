@@ -284,3 +284,11 @@ table.results tbody td:nth-child(9) {
 .not-counted-in-average {
   opacity: 0.5;
 }
+
+.skew {
+  transform: rotate(45deg);
+  display: inline-block;
+  margin-right: 0.5em;
+  font-size: 1em;
+  vertical-align: 0%;
+}
