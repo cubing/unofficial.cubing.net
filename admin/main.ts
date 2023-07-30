@@ -1,8 +1,9 @@
 // @ts-ignore
 import { parse } from "csv-parse/browser/esm/sync";
-import { readFile, writeFile } from "fs/promises";
+import { mkdir, readFile, writeFile } from "fs/promises";
 import { FormatID, RoundResults } from "./attempt";
 import { JSDOM } from "jsdom";
+import { join } from "path";
 
 const fileNames = process.argv.slice(2);
 
@@ -46,5 +47,16 @@ for (const fileName of fileNames) {
   const dom = new JSDOM("<!DOCTYPE html>");
   const outputFileName = `${fileName}.html`;
   console.log("Writing:", outputFileName);
-  writeFile(outputFileName, roundResults.toHTML(dom.window.document).outerHTML);
+  // writeFile(outputFileName, roundResults.toHTML(dom.window.document).outerHTML);
+
+
+  const outputHTMLFolder = fileName.split(".").slice(0, -1).join(".");
+  // mkdir(outputHTMLFolder, {recursive: true});
+  const outputHTMLFileName = join(outputHTMLFolder, "index.html");
+  const domParser = new dom.window.DOMParser();
+  const existingIndex = domParser.parseFromString(await readFile(outputHTMLFileName, "utf-8"), "text/html");
+  existingIndex.querySelector("table.results")?.replaceWith(roundResults.toHTML(dom.window.document))
+  const xmlSerializer = new dom.window.XMLSerializer();
+  writeFile(outputHTMLFileName, xmlSerializer.serializeToString(existingIndex));
+
 }
