@@ -1,3 +1,8 @@
+.PHONY: generate
+generate:
+	bun run ./admin/main.ts
+
+
 .PHONY: setup
 setup:
 	bun install

@@ -4,8 +4,8 @@ import { mkdir, readFile, writeFile } from "fs/promises";
 import { FormatID, RoundResults } from "./attempt";
 import { JSDOM } from "jsdom";
 import { join } from "path";
-
-const fileNames = process.argv.slice(2);
+import { listFiles } from "./vendor/barely-a-dev-server";
+import { exit } from "process";
 
 export type EventMetadata = { team?: boolean; formatID: FormatID };
 
@@ -33,6 +33,15 @@ export interface CSVColumn {
   attempt5?: string;
 }
 
+const fileNames = (
+  await listFiles(
+    "./",
+    (path) => path.endsWith(".csv"),
+    "./competitions",
+  )
+)
+
+
 for (const fileName of fileNames) {
   const data = await readFile(fileName, "utf-8");
   const parsed: CSVColumn[] = parse(data, {
@@ -57,6 +66,6 @@ for (const fileName of fileNames) {
   const existingIndex = domParser.parseFromString(await readFile(outputHTMLFileName, "utf-8"), "text/html");
   existingIndex.querySelector("table.results")?.replaceWith(roundResults.toHTML(dom.window.document))
   const xmlSerializer = new dom.window.XMLSerializer();
-  writeFile(outputHTMLFileName, xmlSerializer.serializeToString(existingIndex));
+  // writeFile(outputHTMLFileName, xmlSerializer.serializeToString(existingIndex));
 
 }
