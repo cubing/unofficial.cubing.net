@@ -5,7 +5,7 @@ import { FormatID, RoundResults, formatInfos } from "./attempt";
 import { JSDOM } from "jsdom";
 import { join } from "path";
 import { listFiles } from "./vendor/barely-a-dev-server";
-import { exit } from "process";
+import prettier from "prettier";
 
 export type EventMetadata = { team?: boolean; formatID: FormatID };
 
@@ -71,5 +71,10 @@ for (const fileName of fileNames) {
   existingIndex.querySelector("#round-format")!.textContent =
     formatInfos[eventMetadata.formatID].description;
   const xmlSerializer = new dom.window.XMLSerializer();
-  writeFile(outputHTMLFileName, xmlSerializer.serializeToString(existingIndex));
+  writeFile(
+    outputHTMLFileName,
+    await prettier.format(xmlSerializer.serializeToString(existingIndex), {
+      parser: "html",
+    }),
+  );
 }
