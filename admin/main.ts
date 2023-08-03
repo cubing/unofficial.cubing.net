@@ -35,9 +35,9 @@ export interface CSVColumn {
 }
 
 const fileNames = await listFiles(
-  "./",
+  ".",
   (path) => path.endsWith(".csv"),
-  "./competitions",
+  "./site/competitions",
 );
 
 for (const fileName of fileNames) {

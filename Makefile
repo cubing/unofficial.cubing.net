@@ -15,15 +15,15 @@ lint:
 format:
 	bunx rome format ./
 
-SFTP_PATH = "towns.dreamhost.com:~/unofficial.cubing.net/"
-URL       = "https://unofficial.cubing.net/"
+SOURCE_PATH = "./site"
+SFTP_PATH   = "towns.dreamhost.com:~/unofficial.cubing.net/"
+URL         = "https://unofficial.cubing.net/"
 
 .PHONY: deploy
 deploy:
 	rsync -avz \
 		--exclude .DS_Store \
 		--exclude .git \
-		--exclude target \
-		./ \
+		${SOURCE_PATH} \
 		${SFTP_PATH}
 	echo "\nDone deploying. Go to ${URL}\n"
