@@ -20,7 +20,7 @@ SFTP_PATH   = "towns.dreamhost.com:~/unofficial.cubing.net/"
 URL         = "https://unofficial.cubing.net/"
 
 .PHONY: deploy
-deploy:
+deploy: generate
 	rsync -avz \
 		--exclude .DS_Store \
 		--exclude .git \
