@@ -23,6 +23,7 @@ deploy:
 	rsync -avz \
 		--exclude .DS_Store \
 		--exclude .git \
+		--exclude target \
 		./ \
 		${SFTP_PATH}
 	echo "\nDone deploying. Go to ${URL}\n"
