@@ -171,7 +171,6 @@ class CompetitorRoundResult {
       }
       td.textContent = s;
     }
-    console.log(tr.textContent);
     return tr;
   }
 }

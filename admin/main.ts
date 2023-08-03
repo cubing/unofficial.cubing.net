@@ -46,7 +46,7 @@ for (const fileName of fileNames) {
     columns: true,
   });
 
-  console.log(fileName.split(".")[0]);
+  console.log(`[${fileName.split(".")[0]}] Processing…`);
   // rome-ignore lint/style/noNonNullAssertion: TODO
   const eventFromFilename: Event = fileName.split("/").at(-1)?.split(".")[0]!; // TODO
   const eventMetadata: EventMetadata = events[eventFromFilename];
