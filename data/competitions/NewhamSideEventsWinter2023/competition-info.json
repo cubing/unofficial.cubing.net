@@ -5,7 +5,7 @@
     "fto": [
       {
         "roundFormatID": "avg5",
-        "roundEndDate": "Feb 11 - 12, 2023 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+        "roundEndDate": "2023-02-12"
       }
     ]
   }

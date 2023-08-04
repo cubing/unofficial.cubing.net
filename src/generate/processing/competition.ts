@@ -1,15 +1,11 @@
-import { CompetitionInfo } from "../data/competiton";
+import { compareEndDates, type CompetitionInfo, type EndDate } from "../data/competiton";
 import { events } from "../data/events";
 import { sharedDocument } from "../jsdom";
 import { Path } from "../path";
 import { competitionPageTemplate } from "../template";
-import { DIST_SITE_FOLDER } from "./all-competitions";
 import { CompetitionEvent } from "./event";
+import { COMPETITON_SOURCE_DATA_FOLDER, DIST_COMPETITIONS_FOLDER } from "./folders";
 
-export const COMPETITON_SOURCE_DATA_FOLDER =
-  Path.fromProjectRootRelative("data/competitions");
-
-export const DIST_COMPETITIONS_FOLDER = DIST_SITE_FOLDER.getRelative("competitions");
 
 export class Competition {
   constructor(private competitionID: string) {}
@@ -85,5 +81,21 @@ export class Competition {
       }
       
     (await this.outputFolderPath()).index.writeDOM(outputDocument)
+  }
+
+  // TODO: use the full competition end date?
+  async latestDate(): Promise<EndDate> {
+    let latestRoundEndDate: string | undefined;
+    for (const event of Object.values((await this.info()).roundsByEvent)) {
+      for (const round of event) {
+        if ((!latestRoundEndDate) || compareEndDates(round.roundEndDate ,latestRoundEndDate) > 0) {
+          latestRoundEndDate = round.roundEndDate
+        }
+      }
+    }
+    if (!latestRoundEndDate) {
+      throw new Error("No rounds? " + this.competitionID);
+    }
+    return latestRoundEndDate;
   }
 }

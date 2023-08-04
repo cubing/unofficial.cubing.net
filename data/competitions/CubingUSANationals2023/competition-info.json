@@ -5,19 +5,19 @@
     "fto": [
       {
         "roundFormatID": "avg5",
-        "date": "2023-08-12"
+        "roundEndDate": "2023-08-12"
       }
     ],
     "333_team_bld": [
       {
         "roundFormatID": "bo3",
-        "date": "2023-08-12"
+        "roundEndDate": "2023-08-12"
       }
     ],
     "magic": [
       {
         "roundFormatID": "avg5",
-        "date": "2023-08-14"
+        "roundEndDate": "2023-08-14"
       }
     ]
   }

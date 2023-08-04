@@ -3,18 +3,37 @@ import { rootPageTemplate } from "../template";
 import { Competition } from "./competition";
 import { sharedDocument } from "../jsdom";
 import { Path } from "../path";
-
-export const DIST_SITE_FOLDER =
-    Path.fromProjectRootRelative("dist/unofficial.cubing.net");
+import { compareEndDates } from "../data/competiton";
+import { DIST_SITE_FOLDER } from "./folders";
 
 // *shakes fist at Apple*
 function exclude_DSStore(paths: string[]): string[] {
   return paths.filter((folderName) => !folderName.startsWith("."));
 }
 
+interface ValueWithComparable<T, U> {
+  value: T,
+  comparable: U
+}
+
+// Does not modify `inputValues`.
+async function asyncSortBy<T, U>(inputList: Array<T>, valueToComparable: (t: T) => Promise<U>, comparisonFn: (u1: U, u2: U) => number) : Promise<T[]> {
+  const withComparables: ValueWithComparable<T, U>[] = await Promise.all(inputList.map(async value => {return {value, comparable: await valueToComparable(value)}}));
+  function internalComparisonFn(a: ValueWithComparable<T, U>, b: ValueWithComparable<T, U>) {
+    return comparisonFn(a.comparable, b.comparable);
+  }
+  withComparables.sort(internalComparisonFn);
+  return withComparables.map(valueWithComparable => valueWithComparable.value);
+}
+
 // TODO: sort by date
-export async function allCompetitionIDs (): Promise<string[]> {
-  return exclude_DSStore(await readdir("./data/competitions"));
+export async function allCompetitions (): Promise<Competition[]> {
+  const competitionIDs = exclude_DSStore(await readdir("./data/competitions"));
+  const competitions = competitionIDs.map( (competitionID) => 
+    new Competition(competitionID)
+  );
+
+  return asyncSortBy(competitions, competition => competition.latestDate(), compareEndDates);
 }
 
 

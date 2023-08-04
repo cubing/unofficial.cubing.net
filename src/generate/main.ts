@@ -1,10 +1,8 @@
-import { Competition } from "./processing/competition";
-import { RootPage, allCompetitionIDs } from "./processing/all-competitions";
+import { RootPage, allCompetitions } from "./processing/all-competitions";
 
 const rootPage = new RootPage();
 
-for (const competitionID of await allCompetitionIDs()) {
-  const competition = new Competition(competitionID);
+for (const competition of await allCompetitions()) {
   for await (const competitionEvents of competition.events()) {
     await competitionEvents.writeHTML();
   }
