@@ -13,48 +13,71 @@ function exclude_DSStore(paths: string[]): string[] {
 }
 
 interface ValueWithComparable<T, U> {
-  value: T,
-  comparable: U
+  value: T;
+  comparable: U;
 }
 
 // Does not modify `inputValues`.
-async function asyncSortBy<T, U>(inputList: Array<T>, valueToComparable: (t: T) => Promise<U>, comparisonFn: (u1: U, u2: U) => number) : Promise<T[]> {
-  const withComparables: ValueWithComparable<T, U>[] = await Promise.all(inputList.map(async value => {return {value, comparable: await valueToComparable(value)}}));
-  function internalComparisonFn(a: ValueWithComparable<T, U>, b: ValueWithComparable<T, U>) {
+async function asyncSortBy<T, U>(
+  inputList: Array<T>,
+  valueToComparable: (t: T) => Promise<U>,
+  comparisonFn: (u1: U, u2: U) => number,
+): Promise<T[]> {
+  const withComparables: ValueWithComparable<T, U>[] = await Promise.all(
+    inputList.map(async (value) => {
+      return { value, comparable: await valueToComparable(value) };
+    }),
+  );
+  function internalComparisonFn(
+    a: ValueWithComparable<T, U>,
+    b: ValueWithComparable<T, U>,
+  ) {
     return comparisonFn(a.comparable, b.comparable);
   }
   withComparables.sort(internalComparisonFn);
-  return withComparables.map(valueWithComparable => valueWithComparable.value);
+  return withComparables.map(
+    (valueWithComparable) => valueWithComparable.value,
+  );
 }
 
 // TODO: sort by date
-export async function allCompetitions (): Promise<Competition[]> {
+export async function allCompetitions(): Promise<Competition[]> {
   const competitionIDs = exclude_DSStore(await readdir("./data/competitions"));
-  const competitions = competitionIDs.map( (competitionID) => 
-    new Competition(competitionID)
+  const competitions = competitionIDs.map(
+    (competitionID) => new Competition(competitionID),
   );
 
-  return asyncSortBy(competitions, competition => competition.latestDate(), compareEndDates);
+  return asyncSortBy(
+    competitions,
+    (competition) => competition.latestDate(),
+    compareEndDates,
+  );
 }
 
-
 export class RootPage {
-  outputDocument = rootPageTemplate.apply({})
-  competitionListElem = (async () => (await this.outputDocument).getElementById("competition-list")! )()
+  outputDocument = rootPageTemplate.apply({});
+  competitionListElem = (async () =>
+    (await this.outputDocument).getElementById("competition-list")!)();
 
   async addCompetition(competition: Competition) {
-    const tr = (await this.competitionListElem).appendChild(sharedDocument.createElement("tr"));
+    const tr = (await this.competitionListElem).appendChild(
+      sharedDocument.createElement("tr"),
+    );
     const td = tr.appendChild(sharedDocument.createElement("td"));
     const a = td.appendChild(sharedDocument.createElement("a"));
-    a.href = `./competitions/${competition.ID}`
-    a.textContent = (await competition.info()).fullName
+    a.href = `./competitions/${competition.ID}`;
+    a.textContent = (await competition.info()).fullName;
 
-    td.appendChild(sharedDocument.createElement("span")).classList.add("spacer");
+    td.appendChild(sharedDocument.createElement("span")).classList.add(
+      "spacer",
+    );
 
     for (const eventID in (await competition.info()).roundsByEvent) {
       const eventLink = td.appendChild(sharedDocument.createElement("a"));
       eventLink.href = "./competitions/" + competition.ID + "/" + eventID + "/";
-      const eventSpan = eventLink.appendChild(sharedDocument.createElement("span"));
+      const eventSpan = eventLink.appendChild(
+        sharedDocument.createElement("span"),
+      );
       eventSpan.classList.add("cubing-icon");
       eventSpan.classList.add(events[eventID].cubingIconClass);
     }
@@ -64,4 +87,3 @@ export class RootPage {
     await DIST_SITE_FOLDER.index.writeDOM(await this.outputDocument);
   }
 }
-

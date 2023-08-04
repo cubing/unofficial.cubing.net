@@ -1,11 +1,17 @@
-import { compareEndDates, type CompetitionInfo, type EndDate } from "../data/competiton";
+import {
+  compareEndDates,
+  type CompetitionInfo,
+  type EndDate,
+} from "../data/competiton";
 import { events } from "../data/events";
 import { sharedDocument } from "../jsdom";
 import { Path } from "../path";
 import { competitionPageTemplate } from "../template";
 import { CompetitionEvent } from "./event";
-import { COMPETITON_SOURCE_DATA_FOLDER, DIST_COMPETITIONS_FOLDER } from "./folders";
-
+import {
+  COMPETITON_SOURCE_DATA_FOLDER,
+  DIST_COMPETITIONS_FOLDER,
+} from "./folders";
 
 export class Competition {
   constructor(private competitionID: string) {}
@@ -38,7 +44,9 @@ export class Competition {
 
   async *events(): AsyncGenerator<CompetitionEvent> {
     const info = await this.info();
-    for (const [eventID, competitionRoundsByEvent] of Object.entries(info.roundsByEvent)) {
+    for (const [eventID, competitionRoundsByEvent] of Object.entries(
+      info.roundsByEvent,
+    )) {
       yield new CompetitionEvent(this, eventID, competitionRoundsByEvent);
     }
   }
@@ -48,9 +56,7 @@ export class Competition {
   }
 
   async outputFolderPath(): Promise<Path> {
-    return (
-      await DIST_COMPETITIONS_FOLDER.getRelative(this.ID)
-    )
+    return await DIST_COMPETITIONS_FOLDER.getRelative(this.ID);
   }
 
   async writeHTML(): Promise<void> {
@@ -59,29 +65,29 @@ export class Competition {
       "competition-wca-url": this.wcaURL(),
     });
 
-
     // for await (const competitionRoundResult of this.rounds()) {} // TODO
-    const eventListElem = outputDocument
-      .querySelector("#event-list")!;
-    
-      // Note: `in`!
-      for (const eventID in (await this.info()).roundsByEvent) {
-        const div = eventListElem.appendChild(sharedDocument.createElement("div"));
+    const eventListElem = outputDocument.querySelector("#event-list")!;
 
-        const eventMetadata = events[eventID];
+    // Note: `in`!
+    for (const eventID in (await this.info()).roundsByEvent) {
+      const div = eventListElem.appendChild(
+        sharedDocument.createElement("div"),
+      );
 
-        const iconElement = div.appendChild(sharedDocument.createElement("span"));
-        iconElement.classList.add("cubing-icon");
-        iconElement.classList.add(eventMetadata.cubingIconClass);
+      const eventMetadata = events[eventID];
 
-        div.append(" ")
+      const iconElement = div.appendChild(sharedDocument.createElement("span"));
+      iconElement.classList.add("cubing-icon");
+      iconElement.classList.add(eventMetadata.cubingIconClass);
 
-        const linkElement = div.appendChild(sharedDocument.createElement("a"));
-        linkElement.href = "./" + eventID + "/";
-        linkElement.textContent = eventMetadata.fullName;
-      }
-      
-    (await this.outputFolderPath()).index.writeDOM(outputDocument)
+      div.append(" ");
+
+      const linkElement = div.appendChild(sharedDocument.createElement("a"));
+      linkElement.href = "./" + eventID + "/";
+      linkElement.textContent = eventMetadata.fullName;
+    }
+
+    (await this.outputFolderPath()).index.writeDOM(outputDocument);
   }
 
   // TODO: use the full competition end date? (Note that the last unofficial event end date may be in a different year than the competition year/competition end date. I'm not sure which one is more intuitive to sort by.)
@@ -89,8 +95,11 @@ export class Competition {
     let latestRoundEndDate: string | undefined;
     for (const event of Object.values((await this.info()).roundsByEvent)) {
       for (const round of event) {
-        if ((!latestRoundEndDate) || compareEndDates(round.roundEndDate ,latestRoundEndDate) > 0) {
-          latestRoundEndDate = round.roundEndDate
+        if (
+          !latestRoundEndDate ||
+          compareEndDates(round.roundEndDate, latestRoundEndDate) > 0
+        ) {
+          latestRoundEndDate = round.roundEndDate;
         }
       }
     }

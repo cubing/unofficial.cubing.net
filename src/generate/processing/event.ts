@@ -8,7 +8,11 @@ import { CompetitionRoundInfo } from "../data/competiton";
 import { exit } from "node:process";
 
 export class CompetitionEvent {
-  constructor(public competition: Competition, public eventID: EventID, public competitionRoundsByEvent: CompetitionRoundInfo[]) {}
+  constructor(
+    public competition: Competition,
+    public eventID: EventID,
+    public competitionRoundsByEvent: CompetitionRoundInfo[],
+  ) {}
 
   async *rounds(): AsyncGenerator<CompetitionRound> {
     for (const roundInfo of this.competitionRoundsByEvent) {
@@ -21,11 +25,9 @@ export class CompetitionEvent {
   }
 
   async outputFolderPath(): Promise<Path> {
-    return (
-      (await this.competition.outputFolderPath())
-        .getRelative(this.eventID)
-        .ensureFolderExists()
-    );
+    return (await this.competition.outputFolderPath())
+      .getRelative(this.eventID)
+      .ensureFolderExists();
   }
 
   async writeHTML(): Promise<void> {
@@ -33,7 +35,8 @@ export class CompetitionEvent {
       console.error("TODO: Multiple rounds not supported yet.");
       // exit(1);
     }
-    const roundFormat = roundFormats[this.competitionRoundsByEvent[0].roundFormatID]; // TODO: PER ROUND
+    const roundFormat =
+      roundFormats[this.competitionRoundsByEvent[0].roundFormatID]; // TODO: PER ROUND
     const outputDocument = await eventPageTemplate.apply({
       "competition-name": (await this.competition.info()).fullName,
       "event-icon-class": this.eventMetadata.cubingIconClass,
@@ -42,12 +45,11 @@ export class CompetitionEvent {
       "num-attempts": `num-attempts-${roundFormat.numAttempts}`,
     });
 
-
     // for await (const competitionRoundResult of this.rounds()) {} // TODO
     outputDocument
       .querySelector("table.results")
       ?.replaceWith(await (await this.rounds().next()).value!.toHTML());
 
-    (await this.outputFolderPath()).index.writeDOM(outputDocument)
+    (await this.outputFolderPath()).index.writeDOM(outputDocument);
   }
 }

@@ -1,7 +1,11 @@
 import { stat, readdir } from "node:fs/promises";
 import { join } from "node:path";
 
-export async function listFiles(folderPath: string, filter: (filename: string) => boolean, relativePath?: string): Promise<string[]> {
+export async function listFiles(
+  folderPath: string,
+  filter: (filename: string) => boolean,
+  relativePath?: string,
+): Promise<string[]> {
   const childNames = await readdir(
     relativePath ? join(folderPath, relativePath) : folderPath,
   );

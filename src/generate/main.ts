@@ -7,7 +7,7 @@ for (const competition of await allCompetitions()) {
     await competitionEvents.writeHTML();
   }
   await competition.writeHTML();
-  await rootPage.addCompetition(competition)
+  await rootPage.addCompetition(competition);
 }
 
 await rootPage.writeHTML();

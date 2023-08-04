@@ -95,7 +95,7 @@ export class CompetitionRound {
 
     const competitorRoundResults: CompetitorRoundResult[] = [];
     for (const row of data) {
-      const {name} = row;
+      const { name } = row;
 
       const attempts: AttemptResultTime[] = [];
       for (let i = 1; i <= this.roundFormatInfo.numAttempts; i++) {
@@ -119,9 +119,14 @@ export class CompetitionRound {
             attempts,
           );
         competitorRoundResults.push(competitorRoundResult);
-
       } catch (e) {
-        console.error("Invalid attempt", this.competitionEvent.competition.ID, this.competitionEvent.eventID, this.roundNumber, name)
+        console.error(
+          "Invalid attempt",
+          this.competitionEvent.competition.ID,
+          this.competitionEvent.eventID,
+          this.roundNumber,
+          name,
+        );
       }
     }
     return competitorRoundResults;

@@ -48,7 +48,7 @@ export class Path {
   }
 
   async writeDOM(node: Node): Promise<void> {
-    console.log("Writing:", this.toString())
+    console.log("Writing:", this.toString());
     await writeFile(this.toString(), await serializeDOMNode(node));
   }
 

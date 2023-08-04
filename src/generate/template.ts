@@ -16,7 +16,9 @@ class PageTemplate {
     })();
   }
 
-  async apply<T extends Node>(fields: Record<string, string>): Promise<Document> {
+  async apply<T extends Node>(
+    fields: Record<string, string>,
+  ): Promise<Document> {
     const document = (await this.templateDocument).cloneNode(true) as Document;
     for (const [key, value] of Object.entries(fields)) {
       {
@@ -46,5 +48,9 @@ class PageTemplate {
 }
 
 export const rootPageTemplate = new PageTemplate("./index.html");
-export const competitionPageTemplate = new PageTemplate("./competitions/each-competition/index.html");
-export const eventPageTemplate = new PageTemplate("./competitions/each-competition/each-event/index.html");
+export const competitionPageTemplate = new PageTemplate(
+  "./competitions/each-competition/index.html",
+);
+export const eventPageTemplate = new PageTemplate(
+  "./competitions/each-competition/each-event/index.html",
+);
