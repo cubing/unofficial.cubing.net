@@ -1,0 +1,12 @@
+{
+  "id": "IrishChampionship2023",
+  "fullName": "Irish Championship 2023",
+  "roundsByEvent": {
+    "333_team_bld": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "2023-07-07"
+      }
+    ]
+  }
+}
