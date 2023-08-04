@@ -1,0 +1,16 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: curl -fsSL https://bun.sh/install | bash
+      - run: echo "${HOME}/.bun/bin" >> $GITHUB_PATH
+      - run: bun install
+      - run: make build
+      - run: make lint
+      - run: make format
