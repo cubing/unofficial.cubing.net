@@ -84,7 +84,7 @@ export class Competition {
     (await this.outputFolderPath()).index.writeDOM(outputDocument)
   }
 
-  // TODO: use the full competition end date?
+  // TODO: use the full competition end date? (Note that the last unofficial event end date may be in a different year than the competition year/competition end date. I'm not sure which one is more intuitive to sort by.)
   async latestDate(): Promise<EndDate> {
     let latestRoundEndDate: string | undefined;
     for (const event of Object.values((await this.info()).roundsByEvent)) {
