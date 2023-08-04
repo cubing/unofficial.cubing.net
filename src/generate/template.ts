@@ -22,7 +22,7 @@ class PageTemplate {
       {
         const className = `template-class-${key}`;
         for (const elem of document.getElementsByClassName(className)) {
-          elem.classList.add(`${key}-${value}`);
+          elem.classList.add(`${value}`);
           elem.classList.remove(className);
         }
       }
