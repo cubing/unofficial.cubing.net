@@ -5,6 +5,7 @@ import { sharedDocument } from "../jsdom";
 import { Path } from "../path";
 import { compareEndDates } from "../data/competiton";
 import { DIST_SITE_FOLDER } from "./folders";
+import { events } from "../data/events";
 
 // *shakes fist at Apple*
 function exclude_DSStore(paths: string[]): string[] {
@@ -47,6 +48,16 @@ export class RootPage {
     const a = td.appendChild(sharedDocument.createElement("a"));
     a.href = `./competitions/${competition.ID}`
     a.textContent = (await competition.info()).fullName
+
+    td.appendChild(sharedDocument.createElement("span")).classList.add("spacer");
+
+    for (const eventID in (await competition.info()).roundsByEvent) {
+      const eventLink = td.appendChild(sharedDocument.createElement("a"));
+      eventLink.href = "./competitions/" + competition.ID + "/" + eventID + "/";
+      const eventSpan = eventLink.appendChild(sharedDocument.createElement("span"));
+      eventSpan.classList.add("cubing-icon");
+      eventSpan.classList.add(events[eventID].cubingIconClass);
+    }
   }
 
   async writeHTML(): Promise<void> {

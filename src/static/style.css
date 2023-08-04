@@ -108,11 +108,32 @@ h3 {
 
 table.listing {
   border-collapse: collapse;
+  margin: auto;
 }
 
 table.listing td {
   border: 1px solid var(--text-color);
-  padding: 1em;
+  padding: 0.25em 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+table.listing td>* {
+  flex-grow: 0;
+}
+
+/* TODO: get rid of `center` so we don't have to do this. */
+table.listing td a {
+  text-align: start;
+}
+
+table.listing td .spacer {
+  width: 1em;
+  flex-grow: 1;
+}
+
+table.listing .cubing-icon {
+  font-size: 1.5em;
 }
 
 /******** Dark mode ********/

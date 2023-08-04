@@ -64,7 +64,8 @@ export class Competition {
     const eventListElem = outputDocument
       .querySelector("#event-list")!;
     
-      for (const [eventID, competitionRoundsByEvent] of Object.entries((await this.info()).roundsByEvent)) {
+      // Note: `in`!
+      for (const eventID in (await this.info()).roundsByEvent) {
         const div = eventListElem.appendChild(sharedDocument.createElement("div"));
 
         const eventMetadata = events[eventID];
