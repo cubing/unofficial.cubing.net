@@ -13,5 +13,6 @@ If you can format each round as a CSV [like this](https://raw.githubusercontent.
 If you have `bun` installed, you can add a competition using:
 
 ```shell
+bun install
 bun run script/add-competition.ts -- SomeCompetition2023 fto magic
 ```
