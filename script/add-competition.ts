@@ -4,7 +4,7 @@ import { argv, exit } from "node:process"
 import { sharedDOMParser } from "../src/generate/jsdom";
 import { CompetitionInfo, CompetitionRoundInfo } from "../src/generate/data/competiton";
 import { EventID, events } from "../src/generate/data/events";
-import { COMPETITON_SOURCE_DATA_FOLDER } from "../src/generate/processing/competition";
+import { COMPETITON_SOURCE_DATA_FOLDER } from "../src/generate/processing/folders";
 
 const args = argv.slice(2);
 const competitionID = args.splice(0,1)[0];
