@@ -1,0 +1,2 @@
+# Limit caching to 5 minutes (does this work properly in Dreamhost?),
+ExpiresActive off Header always set Cache-Control "max-age=300; must-revalidate"
