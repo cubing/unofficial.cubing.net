@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import { argv, exit } from "node:process"
 import { sharedDOMParser } from "../src/generate/jsdom";
 import { CompetitionInfo, CompetitionRoundInfo } from "../src/generate/data/competiton";
