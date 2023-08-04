@@ -2,6 +2,11 @@
   "id": "CubingUSAWesternChampionship2021",
   "fullName": "CubingUSA Western Championship 2021",
   "roundsByEvent": {
-    "fto": "avg5"
+    "fto": [
+      {
+        "roundFormatID": "avg5",
+        "date": "2021-11-28"
+      }
+    ]
   }
 }

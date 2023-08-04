@@ -3,8 +3,7 @@ import { RoundFormatID } from "./rounds";
 export type EventMetadata = {
   fullName: string;
   team?: boolean;
-  // TODO: `defaultRoundFormatID`?
-  validRoundFormatIDs: RoundFormatID[];
+  validRoundFormatIDs: RoundFormatID[]; // The first entry is taken as the default.
   cubingIconClass: string;
 };
 

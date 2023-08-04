@@ -51,4 +51,8 @@ export class Path {
     console.log("Writing:", this.toString())
     await writeFile(this.toString(), await serializeDOMNode(node));
   }
+
+  async writeJSON(json: any): Promise<void> {
+    await writeFile(this.toString(), JSON.stringify(json, null, "  "));
+  }
 }

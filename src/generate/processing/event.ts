@@ -1,26 +1,16 @@
-import { CompetitionRoundInfo, CompetitionRoundsByEvent } from "../data/competiton";
 import { EventID, EventMetadata, events } from "../data/events";
 import { roundFormats } from "../data/rounds";
 import { Path } from "../path";
 import { eventPageTemplate } from "../template";
 import { CompetitionRound } from "./round";
 import type { Competition } from "./competition";
+import { CompetitionRoundInfo } from "../data/competiton";
 
 export class CompetitionEvent {
-  constructor(public competition: Competition, public eventID: EventID, public competitionRoundsByEvent: CompetitionRoundsByEvent) {}
-
-  private get roundInfos(): CompetitionRoundInfo[] {
-    return typeof this.competitionRoundsByEvent === "string"
-        ? [
-            {
-              roundFormatID: this.competitionRoundsByEvent,
-            },
-          ]
-        : this.competitionRoundsByEvent;
-  }
+  constructor(public competition: Competition, public eventID: EventID, public competitionRoundsByEvent: CompetitionRoundInfo[]) {}
 
   async *rounds(): AsyncGenerator<CompetitionRound> {
-    for (const roundInfo of this.roundInfos) {
+    for (const roundInfo of this.competitionRoundsByEvent) {
       yield new CompetitionRound(this, this.eventID, roundInfo, 1);
     }
   }
@@ -38,7 +28,10 @@ export class CompetitionEvent {
   }
 
   async writeHTML(): Promise<void> {
-    const roundFormat = roundFormats[this.roundInfos[0].roundFormatID]; // TODO: PER ROUND
+    if (this.competitionRoundsByEvent[1]) {
+      throw new Error("TODO: Multiple rounds not supported yet.");
+    }
+    const roundFormat = roundFormats[this.competitionRoundsByEvent[0].roundFormatID]; // TODO: PER ROUND
     const outputDocument = await eventPageTemplate.apply({
       "competition-name": (await this.competition.info()).fullName,
       "event-icon-class": this.eventMetadata.cubingIconClass,

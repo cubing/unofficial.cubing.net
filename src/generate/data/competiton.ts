@@ -6,12 +6,11 @@ export type CompetitionID = string;
 
 export interface CompetitionRoundInfo {
   roundFormatID: RoundFormatID;
+  roundEndDate: string; // YYYY-MM-DD
 }
-
-export type CompetitionRoundsByEvent = RoundFormatID | CompetitionRoundInfo[];
 
 export interface CompetitionInfo {
   id: string;
   fullName: string;
-  roundsByEvent: Record<EventID, CompetitionRoundsByEvent>;
+  roundsByEvent: Record<EventID, CompetitionRoundInfo[]>;
 }

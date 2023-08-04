@@ -6,7 +6,7 @@ import { competitionPageTemplate } from "../template";
 import { DIST_SITE_FOLDER } from "./all-competitions";
 import { CompetitionEvent } from "./event";
 
-const COMPETITON_SOURCE_DATA_FOLDER =
+export const COMPETITON_SOURCE_DATA_FOLDER =
   Path.fromProjectRootRelative("data/competitions");
 
 export const DIST_COMPETITIONS_FOLDER = DIST_SITE_FOLDER.getRelative("competitions");
