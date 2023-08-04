@@ -4,7 +4,7 @@ import { CompetitionRoundInfo } from "../data/competiton";
 import { CompetitorInfo } from "../data/competitors";
 import { EventID, EventMetadata, events } from "../data/events";
 import { RoundFormatInfo, roundFormats } from "../data/rounds";
-import { sharedDomDocument } from "../jsdom";
+import { sharedDocument } from "../jsdom";
 import { CSVColumn } from "../data/csv";
 import { CompetitionEvent } from "./event";
 
@@ -143,19 +143,19 @@ export class CompetitionRound {
   }
 
   public async toHTML(): Promise<HTMLTableElement> {
-    const table = sharedDomDocument.createElement("table");
+    const table = sharedDocument.createElement("table");
     table.classList.add("results");
     table.classList.add(`num-attempts-${this.roundFormatInfo.numAttempts}`);
     if (this.roundFormatInfo.rankedByBest) {
       table.classList.add("ranked-by-best");
     }
 
-    const thead = table.appendChild(sharedDomDocument.createElement("thead"));
-    thead.appendChild(this.theadHTML(sharedDomDocument));
+    const thead = table.appendChild(sharedDocument.createElement("thead"));
+    thead.appendChild(this.theadHTML(sharedDocument));
 
-    const tbody = table.appendChild(sharedDomDocument.createElement("tbody"));
+    const tbody = table.appendChild(sharedDocument.createElement("tbody"));
     for (const competitorRoundResult of await this.results()) {
-      tbody.appendChild(competitorRoundResult.toHTML(sharedDomDocument));
+      tbody.appendChild(competitorRoundResult.toHTML(sharedDocument));
     }
     return table;
   }

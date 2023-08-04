@@ -3,7 +3,7 @@ import { format } from "prettier";
 
 const dom = new JSDOM("<!DOCTYPE html>");
 
-export const { document: sharedDomDocument } = dom.window;
+export const { document: sharedDocument } = dom.window;
 export const sharedXMLSerializer = new dom.window.XMLSerializer();
 export const sharedDOMParser = new dom.window.DOMParser();
 

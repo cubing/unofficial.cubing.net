@@ -1,16 +1,15 @@
-import { readdir } from "node:fs/promises";
 import { Competition } from "./processing/competition";
+import { RootPage, allCompetitionIDs } from "./processing/all-competitions";
 
-// *shakes fist at Apple*
-function exclude_DSStore(paths: string[]): string[] {
-  return paths.filter((folderName) => !folderName.startsWith("."));
-}
+const rootPage = new RootPage();
 
-const competitionIDs = exclude_DSStore(await readdir("./data/competitions"));
-
-for (const competitionID of competitionIDs) {
+for (const competitionID of await allCompetitionIDs()) {
   const competition = new Competition(competitionID);
   for await (const competitionEvents of competition.events()) {
     await competitionEvents.writeHTML();
   }
+  await competition.writeHTML();
+  await rootPage.addCompetition(competition)
 }
+
+await rootPage.writeHTML();

@@ -28,6 +28,10 @@ export class Path {
     return new Path(join(this.path, relativePath));
   }
 
+  get index(): Path {
+    return this.getRelative("index.html");
+  }
+
   async readText(): Promise<string> {
     return await readFile(this.toString(), "utf-8");
   }
@@ -44,6 +48,7 @@ export class Path {
   }
 
   async writeDOM(node: Node): Promise<void> {
+    console.log("Writing:", this.toString())
     await writeFile(this.toString(), await serializeDOMNode(node));
   }
 }

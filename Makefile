@@ -1,7 +1,18 @@
+.PHONY: build
+build: generate static
+
 .PHONY: generate
 generate:
 	bun run ./src/generate/main.ts
+
+.PHONY: static
+static:
 	cp -R ./src/static/* ./dist/unofficial.cubing.net/
+
+.PHONY: serve-build
+serve-build: build
+	caddy file-server --listen :8000 --browse --root ./dist/unofficial.cubing.net/
+
 
 
 .PHONY: setup
@@ -21,7 +32,7 @@ clean:
 	rm -rf ./dist
 
 
-SOURCE_PATH = "./site"
+SOURCE_PATH = "./dist/unofficial.cubing.net/"
 SFTP_PATH   = "towns.dreamhost.com:~/unofficial.cubing.net/"
 URL         = "https://unofficial.cubing.net/"
 

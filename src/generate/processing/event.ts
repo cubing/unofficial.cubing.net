@@ -6,9 +6,6 @@ import { eventPageTemplate } from "../template";
 import { CompetitionRound } from "./round";
 import type { Competition } from "./competition";
 
-const DIST_COMPETITIONS_FOLDER =
-  Path.fromProjectRootRelative("dist/unofficial.cubing.net/competitions");
-
 export class CompetitionEvent {
   constructor(public competition: Competition, public eventID: EventID, public competitionRoundsByEvent: CompetitionRoundsByEvent) {}
 
@@ -32,13 +29,12 @@ export class CompetitionEvent {
     return events[this.eventID];
   }
 
-  async outputFilePath(): Promise<Path> {
+  async outputFolderPath(): Promise<Path> {
     return (
-      await DIST_COMPETITIONS_FOLDER.getRelative(this.competition.ID())
+      (await this.competition.outputFolderPath())
         .getRelative(this.eventID)
         .ensureFolderExists()
-    )
-      .getRelative("index.html");
+    );
   }
 
   async writeHTML(): Promise<void> {
@@ -57,6 +53,6 @@ export class CompetitionEvent {
       .querySelector("table.results")
       ?.replaceWith(await (await this.rounds().next()).value!.toHTML());
 
-    (await this.outputFilePath()).writeDOM(outputDocument)
+    (await this.outputFolderPath()).index.writeDOM(outputDocument)
   }
 }
