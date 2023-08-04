@@ -21,11 +21,11 @@ setup:
 
 .PHONY: lint
 lint:
-	bunx rome check ./
+	bunx rome check ./script/ ./src/
 
 .PHONY: format
 format:
-	bunx rome format ./
+	bunx rome format --write ./script/ ./src/
 
 .PHONY: clean
 clean:
