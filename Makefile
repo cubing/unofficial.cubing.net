@@ -13,8 +13,6 @@ static:
 serve-build: build
 	caddy file-server --listen :8000 --browse --root ./dist/unofficial.cubing.net/
 
-
-
 .PHONY: setup
 setup:
 	bun install
