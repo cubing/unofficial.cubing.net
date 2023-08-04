@@ -1,0 +1,294 @@
+/******** Cubing icons ********/
+
+@import "https://cdn.cubing.net/css/@cubing/icons";
+
+.cubing-icon {
+  font-size: 2em;
+}
+
+.cubing-icon.large {
+  font-size: 4em;
+}
+
+/******** General utility ********/
+
+.center {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media not all and (max-width: 45em) {
+  .narrow-only {
+    display: none;
+  }
+}
+
+
+/******** Theme color ********/
+
+body,
+body.blue {
+  --accent-color: #4285f4;
+  --translucent-accent-color: #4285f466;
+}
+
+body.orange {
+  --accent-color: #f95b2a;
+  --translucent-accent-color: #f95b2a66;
+}
+
+body.green {
+  --accent-color: #0d904f;
+  --translucent-accent-color: #0d904f66;
+}
+
+body.red {
+  --accent-color: #ce2e20;
+  --translucent-accent-color: #ce2e2066;
+}
+
+/******** Main layout ********/
+
+html {
+  font-family: -apple-system, Roboto, Ubuntu, Tahoma, sans-serif;
+  font-size: 1.1rem;
+
+  --background-color: white;
+  background-color: var(--background-color);
+  --text-color: black;
+  color: var(--text-color);
+
+  --thick-border: 4px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header {
+  align-self: stretch;
+  background: var(--accent-color);
+  padding: 0.5em;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+.header a,
+.header a:visited {
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+h3 {
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 50em;
+  padding: 0 2em 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+table.listing {
+  border-collapse: collapse;
+}
+
+table.listing td {
+  border: 1px solid var(--text-color);
+  padding: 1em;
+}
+
+/******** Dark mode ********/
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --background-color: #000D;
+    --text-color: #EEE;
+  }
+
+  a {
+    color: #669df5;
+  }
+
+  a:visited {
+    color: #af73d5;
+  }
+}
+
+/******** Results table ********/
+
+table.results {
+  border-collapse: collapse;
+}
+
+table.results td {
+  border: 1px solid var(--text-color);
+  padding: 0.3em 0.4em;
+  text-align: right;
+}
+
+table.results thead td {
+  text-align: right;
+  font-weight: bold;
+  border-bottom-width: var(--thick-border);
+  background-color: var(--accent-color);
+  color: white;
+}
+
+table.results thead td:nth-child(5) {
+  text-align: center;
+}
+
+table.results tr:nth-child(even) {
+  background: var(--translucent-accent-color);
+}
+
+/* Name */
+table.results tbody td:nth-child(2) {
+  max-width: 30em;
+}
+
+/* Average */
+table.results thead,
+table.results td:nth-child(3) {
+  font-weight: bold;
+}
+
+
+table.results tbody td:nth-child(5),
+table.results tbody td:nth-child(6),
+table.results tbody td:nth-child(7),
+table.results tbody td:nth-child(8),
+table.results tbody td:nth-child(9) {
+  font-size: 0.75em;
+}
+
+@media (max-width: 45em) {
+
+  .content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  body:not(.show-full-info) table.results td:nth-child(5),
+  body:not(.show-full-info) table.results td:nth-child(6),
+  body:not(.show-full-info) table.results td:nth-child(7),
+  body:not(.show-full-info) table.results td:nth-child(8),
+  body:not(.show-full-info) table.results td:nth-child(9) {
+    display: none
+  }
+
+  body.show-full-info table.results thead {
+    display: none;
+  }
+
+  body.show-full-info table.results,
+  body.show-full-info table.results tbody {
+    width: 100%;
+  }
+
+  body.show-full-info table.results tbody {
+    border-top: var(--thick-border) solid var(--text-color);
+  }
+
+  body.show-full-info table.results tr {
+    border: var(--thick-border) solid var(--text-color);
+    border-top: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tr {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  body.show-full-info table.results tbody td {
+    text-align: center;
+  }
+
+  body.show-full-info table.results tbody td:nth-child(1)::before {
+    content: "Rank\0000a0";
+  }
+
+  body.show-full-info table.results tbody td:nth-child(1) {
+    grid-column: 1 / 2;
+  }
+
+  body.show-full-info table.results tbody td:nth-child(2) {
+    grid-column: 2 / 6;
+    text-align: center;
+    max-width: inherit;
+    grid-row: 1 / 2;
+  }
+
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tbody td:nth-child(2) {
+    grid-column: 2 / 4;
+  }
+
+  body.show-full-info table.results tbody td:nth-child(3) {
+    grid-column: 1 / 6;
+  }
+
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tbody td:nth-child(3) {
+    grid-column: 1 / 4;
+  }
+
+  body.show-full-info table.results tbody td:nth-child(4) {
+    grid-column: 1 / 6;
+  }
+
+  /* TODO: Use a CSS var for the number of attempts? */
+  body.show-full-info table.results.num-attempts-3 tbody td:nth-child(4) {
+    grid-column: 1 / 4;
+  }
+
+  body.show-full-info table.results tbody td:nth-child(3)::after {
+    content: "\0000a0average"
+  }
+
+  body.show-full-info table.results tbody td:nth-child(4)::after {
+    content: "\0000a0best"
+  }
+
+
+  body.show-full-info table.results.ranked-by-best tbody td:nth-child(3)::after {
+    content: "\0000a0best"
+  }
+
+  body.show-full-info table.results.ranked-by-best tbody td:nth-child(4)::after {
+    content: "\0000a0average"
+  }
+
+}
+
+.not-counted-in-average {
+  opacity: 0.5;
+}
+
+.skew {
+  transform: rotate(45deg);
+  display: inline-block;
+  margin-right: 0.5em;
+  font-size: 1em;
+  vertical-align: 0%;
+}

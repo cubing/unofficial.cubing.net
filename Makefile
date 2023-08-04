@@ -1,6 +1,7 @@
 .PHONY: generate
 generate:
-	bun run ./admin/main.ts
+	bun run ./src/generate/main.ts
+	cp -R ./src/static/* ./dist/unofficial.cubing.net/
 
 
 .PHONY: setup
@@ -14,6 +15,11 @@ lint:
 .PHONY: format
 format:
 	bunx rome format ./
+
+.PHONY: clean
+clean:
+	rm -rf ./dist
+
 
 SOURCE_PATH = "./site"
 SFTP_PATH   = "towns.dreamhost.com:~/unofficial.cubing.net/"

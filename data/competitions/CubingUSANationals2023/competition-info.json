@@ -1,0 +1,9 @@
+{
+  "id": "CubingUSANationals2023",
+  "fullName": "CubingUSA Nationals 2023",
+  "roundsByEvent": {
+    "333_team_bld": "bo3",
+    "fto": "avg5",
+    "magic": "avg5"
+  }
+}
