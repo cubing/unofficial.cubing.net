@@ -66,6 +66,8 @@ export class Competition {
     });
 
     // for await (const competitionRoundResult of this.rounds()) {} // TODO
+
+    // rome-ignore lint/style/noNonNullAssertion: <explanation>
     const eventListElem = outputDocument.querySelector("#event-list")!;
 
     // Note: `in`!
@@ -83,7 +85,7 @@ export class Competition {
       div.append(" ");
 
       const linkElement = div.appendChild(sharedDocument.createElement("a"));
-      linkElement.href = "./" + eventID + "/";
+      linkElement.href = `./${eventID}/`;
       linkElement.textContent = eventMetadata.fullName;
     }
 
@@ -104,7 +106,7 @@ export class Competition {
       }
     }
     if (!latestRoundEndDate) {
-      throw new Error("No rounds? " + this.competitionID);
+      throw new Error(`No rounds? ${this.competitionID}`);
     }
     return latestRoundEndDate;
   }

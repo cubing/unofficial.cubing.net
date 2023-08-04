@@ -48,6 +48,7 @@ export class CompetitionEvent {
     // for await (const competitionRoundResult of this.rounds()) {} // TODO
     outputDocument
       .querySelector("table.results")
+      // rome-ignore lint/style/noNonNullAssertion: <explanation>
       ?.replaceWith(await (await this.rounds().next()).value!.toHTML());
 
     (await this.outputFolderPath()).index.writeDOM(outputDocument);

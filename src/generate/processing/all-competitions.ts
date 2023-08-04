@@ -57,6 +57,7 @@ export async function allCompetitions(): Promise<Competition[]> {
 export class RootPage {
   outputDocument = rootPageTemplate.apply({});
   competitionListElem = (async () =>
+    // rome-ignore lint/style/noNonNullAssertion: <explanation>
     (await this.outputDocument).getElementById("competition-list")!)();
 
   async addCompetition(competition: Competition) {
@@ -74,7 +75,7 @@ export class RootPage {
 
     for (const eventID in (await competition.info()).roundsByEvent) {
       const eventLink = td.appendChild(sharedDocument.createElement("a"));
-      eventLink.href = "./competitions/" + competition.ID + "/" + eventID + "/";
+      eventLink.href = `./competitions/${competition.ID}/${eventID}/`;
       const eventSpan = eventLink.appendChild(
         sharedDocument.createElement("span"),
       );

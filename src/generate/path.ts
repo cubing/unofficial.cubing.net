@@ -52,6 +52,7 @@ export class Path {
     await writeFile(this.toString(), await serializeDOMNode(node));
   }
 
+  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
   async writeJSON(json: any): Promise<void> {
     await writeFile(this.toString(), JSON.stringify(json, null, "  "));
   }
