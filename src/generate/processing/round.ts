@@ -95,6 +95,8 @@ export class CompetitionRound {
 
     const competitorRoundResults: CompetitorRoundResult[] = [];
     for (const row of data) {
+      const {name} = row;
+
       const attempts: AttemptResultTime[] = [];
       for (let i = 1; i <= this.roundFormatInfo.numAttempts; i++) {
         const attemptStr = row[`attempt${i}`];
@@ -105,18 +107,22 @@ export class CompetitionRound {
         attempts.push(AttemptResultTime.fromString(attemptStr));
       }
 
-      const averageResult = AttemptResultTime.fromString(row.average);
+      try {
+        const averageResult = AttemptResultTime.fromString(row.average);
+        const competitorRoundResult: CompetitorRoundResult =
+          new CompetitorRoundResult(
+            this.roundFormatInfo,
+            parseInt(row.rank),
+            new CompetitorInfo(name, row.wcaID),
+            averageResult,
+            AttemptResultTime.fromString(row.best),
+            attempts,
+          );
+        competitorRoundResults.push(competitorRoundResult);
 
-      const competitorRoundResult: CompetitorRoundResult =
-        new CompetitorRoundResult(
-          this.roundFormatInfo,
-          parseInt(row.rank),
-          new CompetitorInfo(row.name, row.wcaID),
-          averageResult,
-          AttemptResultTime.fromString(row.best),
-          attempts,
-        );
-      competitorRoundResults.push(competitorRoundResult);
+      } catch (e) {
+        console.error("Invalid attempt", this.competitionEvent.competition.ID, this.competitionEvent.eventID, this.roundNumber, name)
+      }
     }
     return competitorRoundResults;
   }

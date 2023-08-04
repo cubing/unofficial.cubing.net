@@ -1,0 +1,12 @@
+{
+  "id": "WindyCityNewYear2022",
+  "fullName": "Windy City New Year 2022",
+  "roundsByEvent": {
+    "fto": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "Dec 31, 2021 - Jan 1, 2022 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+      }
+    ]
+  }
+}

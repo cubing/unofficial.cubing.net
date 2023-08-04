@@ -1,0 +1,12 @@
+{
+  "id": "OhioStateExpoOpen2022",
+  "fullName": "Ohio State Expo Open 2022",
+  "roundsByEvent": {
+    "fto": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "Apr 1 - 3, 2022 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+      }
+    ]
+  }
+}

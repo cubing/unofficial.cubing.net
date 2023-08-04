@@ -5,6 +5,7 @@ import { eventPageTemplate } from "../template";
 import { CompetitionRound } from "./round";
 import type { Competition } from "./competition";
 import { CompetitionRoundInfo } from "../data/competiton";
+import { exit } from "node:process";
 
 export class CompetitionEvent {
   constructor(public competition: Competition, public eventID: EventID, public competitionRoundsByEvent: CompetitionRoundInfo[]) {}
@@ -29,7 +30,8 @@ export class CompetitionEvent {
 
   async writeHTML(): Promise<void> {
     if (this.competitionRoundsByEvent[1]) {
-      throw new Error("TODO: Multiple rounds not supported yet.");
+      console.error("TODO: Multiple rounds not supported yet.");
+      // exit(1);
     }
     const roundFormat = roundFormats[this.competitionRoundsByEvent[0].roundFormatID]; // TODO: PER ROUND
     const outputDocument = await eventPageTemplate.apply({

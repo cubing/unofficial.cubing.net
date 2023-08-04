@@ -1,0 +1,12 @@
+{
+  "id": "SlowNSteadySpring2022",
+  "fullName": "Slow N Steady Spring 2022",
+  "roundsByEvent": {
+    "fto": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "Apr 2, 2022 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+      }
+    ]
+  }
+}

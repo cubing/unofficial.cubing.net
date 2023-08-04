@@ -1,0 +1,12 @@
+{
+  "id": "SnoCoGoesBacktoSquare12021",
+  "fullName": "SnoCo Goes Back to Square-1 2021",
+  "roundsByEvent": {
+    "fto": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "Nov 20, 2021 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+      }
+    ]
+  }
+}

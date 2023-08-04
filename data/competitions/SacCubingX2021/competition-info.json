@@ -1,0 +1,12 @@
+{
+  "id": "SacCubingX2021",
+  "fullName": "SacCubing X 2021",
+  "roundsByEvent": {
+    "fto": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "2021-11-13"
+      }
+    ]
+  }
+}

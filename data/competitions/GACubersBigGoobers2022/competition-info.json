@@ -1,0 +1,16 @@
+{
+  "id": "GACubersBigGoobers2022",
+  "fullName": "GA Cubers Big Goobers 2022",
+  "roundsByEvent": {
+    "fto": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "2022-04-03"
+      },
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "2022-04-03"
+      }
+    ]
+  }
+}
