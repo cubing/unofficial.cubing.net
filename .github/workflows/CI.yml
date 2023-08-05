@@ -12,6 +12,6 @@ jobs:
       - run: echo "${HOME}/.bun/bin" >> $GITHUB_PATH
       - run: make setup
       - run: make build
-      - run: make lint
+      - run: make lint-ci
       - run: make format
       - run: make clean

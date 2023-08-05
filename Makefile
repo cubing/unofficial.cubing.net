@@ -21,6 +21,10 @@ setup:
 lint:
 	bun x rome check ./script/ ./src/
 
+.PHONY: lint-ci
+lint-ci:
+	bun x rome ci ./script/ ./src/
+
 .PHONY: format
 format:
 	bun x rome format --write ./script/ ./src/
