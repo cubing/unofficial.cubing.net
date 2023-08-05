@@ -3,7 +3,7 @@ import { CSVColumns } from "./csv";
 import { EventMetadata } from "./events";
 import { sharedDocument } from "../jsdom";
 
-const WCAIDRegex = /\d{4}(A-Z){4}\d{2}/;
+const WCAIDRegex = /^\d{4}[A-Z]{4}\d{2}$/;
 
 export class CompetitorIdentity {
   constructor(public name: string, public wcaID?: string) {
