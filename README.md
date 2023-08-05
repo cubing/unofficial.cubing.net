@@ -10,7 +10,7 @@ Do you have results from a competition that is not listed?
 
 Each competition consists of files placed in `data/competitions/[competition-id]`:
 
-- A `competition-info.json` like [this](https://github.com/cubing/unofficial.cubing.net/blob/9dd479776e5cf6fd24f91ec9da83c070819bba46/data/competitions/CubingUSANationals2023/competition-info.json).
+- A `competition-info.json` file like [this](https://github.com/cubing/unofficial.cubing.net/blob/9dd479776e5cf6fd24f91ec9da83c070819bba46/data/competitions/CubingUSANationals2023/competition-info.json).
 - One file at `round-results/[event-name]-round[number].csv` per round, formatted like this:
 
 ```
@@ -30,7 +30,7 @@ Feel free to send a pull request or [file an issue](https://github.com/cubing/un
 1. If the data is not in pull request format, create a pull request matching the format of other competitions.
 2. If you or the contributor were not directly involved in organizing the relevant competition results, verify the results with someone who was.
 3. Ensure there is a `competition-info.json` file for the competition, and a `.csv` file corresponding to each specified round.
-4. Check that CI is passing (green checkmark). For example, you can see that `make build` was able to generate all the competitions [here](https://github.com/cubing/unofficial.cubing.net/actions/runs/5767948616/job/15638362770).
+4. Check that CI is passing (green checkmark) and generating all the appropriate rounds. For example, you can see that `make build` was able to generate all the competitions [here](https://github.com/cubing/unofficial.cubing.net/actions/runs/5767948616/job/15638362770).
 5. Approve the pull request and merge it.
 
 Once the pull request is merged into `main`, CI will run one more time and then [build and deploy](https://github.com/cubing/unofficial.cubing.net/blob/3d9d6fbece18c78ad25999c2464195cf51694063/.github/workflows/pages.yml) the website automatically.
