@@ -1,6 +1,6 @@
 import { parse as csvParse } from "csv-parse/browser/esm/sync";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname, join, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { serializeDOMNode } from "./jsdom";
 
 const PROJECT_ROOT_FOLDER = resolve(
@@ -48,7 +48,8 @@ export class Path {
   }
 
   async writeDOM(node: Node): Promise<void> {
-    console.log("Writing:", this.toString());
+    const { DIST_SITE_FOLDER } = await import("./processing/folders"); // Avoid cyclic import
+    console.log("Writing:", relative(DIST_SITE_FOLDER.toString(), this.toString()));
     await writeFile(this.toString(), await serializeDOMNode(node));
   }
 
