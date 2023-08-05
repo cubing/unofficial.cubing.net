@@ -1,3 +1,5 @@
+<img src="./src/static/img/icon_320w.png" width="160" alt="Project icon — a tilted 3x3x3 icon">
+
 # Unofficial Cubing
 
 Results from unofficial events at [WCA]([Title](https://www.worldcubeassociation.org/)) competitions.
