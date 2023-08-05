@@ -32,22 +32,22 @@
 body,
 body.blue {
   --accent-color: #4285f4;
-  --translucent-accent-color: #4285f466;
+  --translucent-accent-color: #4285f444;
 }
 
 body.orange {
   --accent-color: #f95b2a;
-  --translucent-accent-color: #f95b2a66;
+  --translucent-accent-color: #f95b2a44;
 }
 
 body.green {
   --accent-color: #0d904f;
-  --translucent-accent-color: #0d904f66;
+  --translucent-accent-color: #0d904f44;
 }
 
 body.red {
   --accent-color: #ce2e20;
-  --translucent-accent-color: #ce2e2066;
+  --translucent-accent-color: #ce2e2044;
 }
 
 /******** Main layout ********/
@@ -177,6 +177,7 @@ table.results thead td:nth-child(5) {
   text-align: center;
 }
 
+table.listing tr:nth-child(even),
 table.results tr:nth-child(even) {
   background: var(--translucent-accent-color);
 }
