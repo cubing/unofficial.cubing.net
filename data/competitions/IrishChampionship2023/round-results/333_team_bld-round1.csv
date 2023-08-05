@@ -1,42 +1,42 @@
-rank,name,attempt1,attempt2,attempt3,attempt4,attempt5,average,best
-1,Chris Mills & Tymon Kolasinski,00:31.54,00:23.24,00:49.01,00:44.04,00:32.12,00:35.90,00:23.24
-2,Cuan Dignan & Tiege Powell,00:37.92,00:35.57,00:41.57,00:31.82,01:07.95,00:38.35,00:31.82
-3,Josete Sánchez & Gladys Garcés,00:48.02,01:27.23,00:44.40,00:38.28,00:39.52,00:43.98,00:38.28
-4,Richard Madden & Cillian Hainbach,01:00.02,00:55.51,01:03.18,00:47.19,00:48.38,00:54.64,00:47.19
-5,Adam Bermingham & Namuun Natsagdorj,01:05.13,00:36.16,00:52.13,00:55.48,00:57.29,00:54.97,00:36.16
-6,Mark Gregane & Prabhav Nayak,01:22.58,01:12.01,00:36.37,00:47.26,00:57.48,00:58.92,00:36.37
-7,Sean O Toole & Patrick Kleverlaan,01:05.14,01:17.59,00:56.07,00:56.41,01:01.37,01:00.97,00:56.07
-8,Rory Power Breen & Logan Tully,01:22.14,00:54.94,00:58.06,01:15.65,01:44.20,01:11.95,00:54.94
-9,Matthew (O'Niell?) & Rose O'Neill,01:34.49,01:06.44,01:05.63,01:10.52,02:14.56,01:17.15,01:05.63
-10,Ben Timmons & Kevin Timmons,01:22.36,01:14.22,01:14.48,01:25.12,01:21.87,01:19.57,01:14.22
-11,Kevin Tspon & Anthony Tighe,01:20.10,01:28.03,01:51.64,01:27.94,01:17.17,01:25.36,01:17.17
-12,Jeroen Riempa & Yinte Dik,01:36.53,01:07.88,01:14.47,02:31.23,01:36.82,01:29.27,01:07.88
-13,William Carey & Natan Regiec,01:24.11,01:33.53,01:25.32,01:39.38,01:29.22,01:29.36,01:24.11
-14,Sinead Cleary & Conor Smith,01:10.27,02:05.77,01:42.40,01:18.03,01:38.62,01:33.02,01:10.27
-15,Arthur Nicell & Diarmuid Leo Clarke,01:37.47,01:29.67,01:32.08,01:26.70,01:58.26,01:33.07,01:26.70
-16,Iollan Walsh & Cormac Finke,01:38.28,01:22.61,01:34.16,01:43.16,01:32.43,01:34.96,01:22.61
-17,CJ Furey & Pedro Collado Palma,01:38.48,01:41.32,01:21.74,01:25.09,02:09.14,01:34.96,01:21.74
-18,Nuadh Walsh & Tadhg Kelly,01:46.48,01:21.66,01:29.23,01:37.44,01:40.32,01:35.66,01:21.66
-19,Kasper Warberg Borg & Anette Warber Borg,01:45.46,01:17.52,01:33.01,01:50.17,01:38.90,01:39.12,01:17.52
-20,Jamie Blennerhassett & Oscar Green,01:45.40,01:43.53,02:07.82,01:27.11,01:35.92,01:41.62,01:27.11
-21,Enda Loftus & Aidan Brown,02:33.74,01:57.56,01:53.34,01:34.46,01:25.16,01:48.45,01:25.16
-22,Benjamin Chetcuti Cauchi & Philippa Chetcuti Caudi,01:32.40,01:47.27,01:54.40,01:46.01,DNF,01:49.23,01:32.40
-23,Ronan Finke & Rian Burke,01:35.27,02:04.75,01:49.97,01:15.80,02:05.25,01:50.00,01:15.80
-24,Daniel Tyrrell & Zayd Vawda,02:13.51,01:44.22,02:04.13,01:38.99,01:57.25,01:55.20,01:38.99
-25,Tadhg Keating & Edvin Kurjak,01:37.32,02:03.86,01:52.90,02:08.75,01:50.30,01:55.69,01:37.32
-26,James Hughes & Mark Mooney,01:47.42,01:56.00,02:02.49,01:55.61,02:36.55,01:58.03,01:47.42
-27,Fionn O'Hagan & Tyler Doherty,01:45.53,02:25.87,01:05.13,02:31.82,01:45.40,01:58.93,01:05.13
-28,Daniel Tyrrell & Zayd Vawda,02:13.51,02:44.22,01:53.87,01:38.89,01:57.25,02:01.54,01:38.89
-29,Cathal Murdock & Colm McCarthy,01:59.27,01:09.76,02:03.34,02:14.66,DNF,02:05.76,01:09.76
-30,Oliver Hexter & Adam Devere,01:56.84,DNF,03:11.63,01:15.45,01:10.60,02:07.97,01:10.60
-31,Tighe Byrne & Eoin,02:44.24,02:12.54,02:05.12,02:10.99,02:18.20,02:13.91,02:05.12
-32,Alex Kelly & Donal Croughan,02:37.24,01:53.98,02:19.17,02:21.26,02:30.23,02:23.55,01:53.98
-33,Dominik & Tymon Szalinski,02:59.07,02:00.98,02:21.86,02:24.81,02:58.74,02:35.14,02:00.98
-34,Robert McGonigle (newcomer) & Aravind Nair (newcomer),02:20.09,02:56.43,DNF,03:01.53,02:13.53,02:46.02,02:13.53
-35,Eoin Ryan & Nathan Callaghan,02:33.83,02:03.21,03:06.89,02:49.87,03:27.72,02:50.20,02:03.21
-36,Bo Forsell & Anna Forsell (noncuber),02:00.03,02:36.13,04:01.95,02:52.98,03:06.58,02:51.90,02:00.03
-37,Odhran Albuquerque & Nathan Albuquerque,02:08.35,DNF,02:45.76,03:00.98,02:51.22,02:52.65,02:08.35
-38,Brandon McCann & Arabell McCann,03:10.83,02:33.02,02:10.60,03:14.69,03:01.45,02:55.10,02:10.60
-39,Daniel Pugh & Rafael Velosa Maeda Cavalcanti,03:06.98,04:41.99,DNS,DNS,DNS,DNF,03:06.98
-40,Ben & Cillian,DNF,DNF,DNS,DNS,DNS,DNF,DNF
-41,Charlie Graham McCormack & Timofey Petsyukha,DNF,DNF,DNS,DNS,DNS,DNF,DNF
+rank,name1,name2,attempt1,attempt2,attempt3,attempt4,attempt5,average,best
+1,Chris Mills,Tymon Kolasinski,00:31.54,00:23.24,00:49.01,00:44.04,00:32.12,00:35.90,00:23.24
+2,Cuan Dignan,Tiege Powell,00:37.92,00:35.57,00:41.57,00:31.82,01:07.95,00:38.35,00:31.82
+3,Josete Sánchez,Gladys Garcés,00:48.02,01:27.23,00:44.40,00:38.28,00:39.52,00:43.98,00:38.28
+4,Richard Madden,Cillian Hainbach,01:00.02,00:55.51,01:03.18,00:47.19,00:48.38,00:54.64,00:47.19
+5,Adam Bermingham,Namuun Natsagdorj,01:05.13,00:36.16,00:52.13,00:55.48,00:57.29,00:54.97,00:36.16
+6,Mark Gregane,Prabhav Nayak,01:22.58,01:12.01,00:36.37,00:47.26,00:57.48,00:58.92,00:36.37
+7,Sean O Toole,Patrick Kleverlaan,01:05.14,01:17.59,00:56.07,00:56.41,01:01.37,01:00.97,00:56.07
+8,Rory Power Breen,Logan Tully,01:22.14,00:54.94,00:58.06,01:15.65,01:44.20,01:11.95,00:54.94
+9,Matthew (O'Niell?),Rose O'Neill,01:34.49,01:06.44,01:05.63,01:10.52,02:14.56,01:17.15,01:05.63
+10,Ben Timmons,Kevin Timmons,01:22.36,01:14.22,01:14.48,01:25.12,01:21.87,01:19.57,01:14.22
+11,Kevin Tspon,Anthony Tighe,01:20.10,01:28.03,01:51.64,01:27.94,01:17.17,01:25.36,01:17.17
+12,Jeroen Riempa,Yinte Dik,01:36.53,01:07.88,01:14.47,02:31.23,01:36.82,01:29.27,01:07.88
+13,William Carey,Natan Regiec,01:24.11,01:33.53,01:25.32,01:39.38,01:29.22,01:29.36,01:24.11
+14,Sinead Cleary,Conor Smith,01:10.27,02:05.77,01:42.40,01:18.03,01:38.62,01:33.02,01:10.27
+15,Arthur Nicell,Diarmuid Leo Clarke,01:37.47,01:29.67,01:32.08,01:26.70,01:58.26,01:33.07,01:26.70
+16,Iollan Walsh,Cormac Finke,01:38.28,01:22.61,01:34.16,01:43.16,01:32.43,01:34.96,01:22.61
+17,CJ Furey,Pedro Collado Palma,01:38.48,01:41.32,01:21.74,01:25.09,02:09.14,01:34.96,01:21.74
+18,Nuadh Walsh,Tadhg Kelly,01:46.48,01:21.66,01:29.23,01:37.44,01:40.32,01:35.66,01:21.66
+19,Kasper Warberg Borg,Anette Warber Borg,01:45.46,01:17.52,01:33.01,01:50.17,01:38.90,01:39.12,01:17.52
+20,Jamie Blennerhassett,Oscar Green,01:45.40,01:43.53,02:07.82,01:27.11,01:35.92,01:41.62,01:27.11
+21,Enda Loftus,Aidan Brown,02:33.74,01:57.56,01:53.34,01:34.46,01:25.16,01:48.45,01:25.16
+22,Benjamin Chetcuti Cauchi,Philippa Chetcuti Caudi,01:32.40,01:47.27,01:54.40,01:46.01,DNF,01:49.23,01:32.40
+23,Ronan Finke,Rian Burke,01:35.27,02:04.75,01:49.97,01:15.80,02:05.25,01:50.00,01:15.80
+24,Daniel Tyrrell,Zayd Vawda,02:13.51,01:44.22,02:04.13,01:38.99,01:57.25,01:55.20,01:38.99
+25,Tadhg Keating,Edvin Kurjak,01:37.32,02:03.86,01:52.90,02:08.75,01:50.30,01:55.69,01:37.32
+26,James Hughes,Mark Mooney,01:47.42,01:56.00,02:02.49,01:55.61,02:36.55,01:58.03,01:47.42
+27,Fionn O'Hagan,Tyler Doherty,01:45.53,02:25.87,01:05.13,02:31.82,01:45.40,01:58.93,01:05.13
+28,Daniel Tyrrell,Zayd Vawda,02:13.51,02:44.22,01:53.87,01:38.89,01:57.25,02:01.54,01:38.89
+29,Cathal Murdock,Colm McCarthy,01:59.27,01:09.76,02:03.34,02:14.66,DNF,02:05.76,01:09.76
+30,Oliver Hexter,Adam Devere,01:56.84,DNF,03:11.63,01:15.45,01:10.60,02:07.97,01:10.60
+31,Tighe Byrne,Eoin,02:44.24,02:12.54,02:05.12,02:10.99,02:18.20,02:13.91,02:05.12
+32,Alex Kelly,Donal Croughan,02:37.24,01:53.98,02:19.17,02:21.26,02:30.23,02:23.55,01:53.98
+33,Dominik,Tymon Szalinski,02:59.07,02:00.98,02:21.86,02:24.81,02:58.74,02:35.14,02:00.98
+34,Robert McGonigle (newcomer),Aravind Nair (newcomer),02:20.09,02:56.43,DNF,03:01.53,02:13.53,02:46.02,02:13.53
+35,Eoin Ryan,Nathan Callaghan,02:33.83,02:03.21,03:06.89,02:49.87,03:27.72,02:50.20,02:03.21
+36,Bo Forsell,Anna Forsell (noncuber),02:00.03,02:36.13,04:01.95,02:52.98,03:06.58,02:51.90,02:00.03
+37,Odhran Albuquerque,Nathan Albuquerque,02:08.35,DNF,02:45.76,03:00.98,02:51.22,02:52.65,02:08.35
+38,Brandon McCann,Arabell McCann,03:10.83,02:33.02,02:10.60,03:14.69,03:01.45,02:55.10,02:10.60
+39,Daniel Pugh,Rafael Velosa Maeda Cavalcanti,03:06.98,04:41.99,DNS,DNS,DNS,DNF,03:06.98
+40,Ben,Cillian,DNF,DNF,DNS,DNS,DNS,DNF,DNF
+41,Charlie Graham McCormack,Timofey Petsyukha,DNF,DNF,DNS,DNS,DNS,DNF,DNF

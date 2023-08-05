@@ -1,18 +1,18 @@
 import { exit } from "node:process";
 import { AttemptResultTime } from "../data/attempts";
 import { CompetitionRoundInfo } from "../data/competiton";
-import { CompetitorInfo } from "../data/competitors";
 import { EventID, EventMetadata, events } from "../data/events";
 import { RoundFormatInfo, roundFormats } from "../data/rounds";
 import { sharedDocument } from "../jsdom";
-import { CSVColumn } from "../data/csv";
+import { CSVColumns } from "../data/csv";
 import { CompetitionEvent } from "./event";
+import { CompetitorOrTeamIdentity } from "../data/competitors";
 
-class CompetitorRoundResult {
+class CompetitorOrTeamRoundResult {
   constructor(
     public roundFormatInfo: RoundFormatInfo,
     public rank: number,
-    public competitorInfo: CompetitorInfo,
+    public competitorOrTeamIdentity: CompetitorOrTeamIdentity,
     public averageResult: AttemptResultTime | undefined,
     public bestResult: AttemptResultTime,
     public attempts: AttemptResultTime[],
@@ -22,7 +22,7 @@ class CompetitorRoundResult {
     const tr = doc.createElement("tr");
     tr.appendChild(doc.createElement("td")).textContent = this.rank.toString();
     tr.appendChild(doc.createElement("td")).appendChild(
-      this.competitorInfo.toHTML(doc),
+      this.competitorOrTeamIdentity.toHTML(),
     );
     if (this.roundFormatInfo.rankedByBest) {
       tr.appendChild(doc.createElement("td")).textContent =
@@ -71,7 +71,7 @@ export class CompetitionRound {
     public roundNumber: number,
   ) {}
 
-  async getCSV(): Promise<CSVColumn[]> {
+  async getCSV(): Promise<CSVColumns[]> {
     return (await this.competitionEvent.competition.dataFolder())
       .getRelative("round-results")
       .getRelative(`${this.eventID}-round${this.roundNumber}.csv`)
@@ -86,14 +86,14 @@ export class CompetitionRound {
     return events[this.eventID]; // TODO: cache?
   }
 
-  async results(): Promise<CompetitorRoundResult[]> {
+  async results(): Promise<CompetitorOrTeamRoundResult[]> {
     const data = await this.getCSV();
     if (data.length === 0) {
       console.error("Error: Round with 0 results!");
       exit(1);
     }
 
-    const competitorRoundResults: CompetitorRoundResult[] = [];
+    const competitorRoundResults: CompetitorOrTeamRoundResult[] = [];
     for (const row of data) {
       const { name } = row;
 
@@ -109,11 +109,11 @@ export class CompetitionRound {
 
       try {
         const averageResult = AttemptResultTime.fromString(row.average);
-        const competitorRoundResult: CompetitorRoundResult =
-          new CompetitorRoundResult(
+        const competitorRoundResult: CompetitorOrTeamRoundResult =
+          new CompetitorOrTeamRoundResult(
             this.roundFormatInfo,
             parseInt(row.rank),
-            new CompetitorInfo(name, row.wcaID),
+            new CompetitorOrTeamIdentity(row, this.eventMetadata),
             averageResult,
             AttemptResultTime.fromString(row.best),
             attempts,
