@@ -1,5 +1,5 @@
 import { parse as csvParse } from "csv-parse/browser/esm/sync";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, open, readFile, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { serializeDOMNode } from "./jsdom";
 
@@ -30,6 +30,11 @@ export class Path {
 
   get index(): Path {
     return this.getRelative("index.html");
+  }
+
+  async touchFile(): Promise<void> {
+    const fileHandle = await open(this.toString(), "a");
+    fileHandle.close?.();
   }
 
   async readText(): Promise<string> {

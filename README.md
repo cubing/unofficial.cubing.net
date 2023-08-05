@@ -26,3 +26,5 @@ If you have `bun` installed, you can add a competition using:
 bun install
 bun run script/add-competition.ts -- SomeCompetition2023 fto magic
 ```
+
+Then add the appropriate CSV files.

@@ -55,10 +55,19 @@ const competitionInfo: CompetitionInfo = {
   roundsByEvent,
 };
 
-const outputFilePath = (
+const outputDataFolder = (
   await COMPETITON_SOURCE_DATA_FOLDER.getRelative(
     competitionID,
   ).ensureFolderExists()
-).getRelative("competition-info.json");
+);
+const outputFilePath = outputDataFolder.getRelative("competition-info.json");
+
+const roundResultFolder = await outputDataFolder.getRelative("round-results").ensureFolderExists();
+for (const [eventID, competitionRoundInfos] of Object.entries(competitionInfo.roundsByEvent)) {
+  for (let i = 1; i <= competitionRoundInfos.length; i++) {
+    roundResultFolder.getRelative(`${eventID}-round${i}.csv`).touchFile()
+  }
+}
+
 console.log(`Writing: ${outputFilePath}`);
 await outputFilePath.writeJSON(competitionInfo);
