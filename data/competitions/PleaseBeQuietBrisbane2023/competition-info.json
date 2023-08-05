@@ -1,0 +1,12 @@
+{
+  "id": "PleaseBeQuietBrisbane2023",
+  "fullName": "Please Be Quiet Brisbane 2023",
+  "roundsByEvent": {
+    "333_team_bld": [
+      {
+        "roundFormatID": "bo3",
+        "roundEndDate": "2023-04-01"
+      }
+    ]
+  }
+}
