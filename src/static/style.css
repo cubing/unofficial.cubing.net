@@ -32,22 +32,30 @@
 body,
 body.blue {
   --accent-color: #4285f4;
-  --translucent-accent-color: #4285f444;
+  --translucent-accent-color: #4285f433;
 }
 
 body.orange {
   --accent-color: #f95b2a;
-  --translucent-accent-color: #f95b2a44;
+  --translucent-accent-color: #f95b2a33;
 }
 
 body.green {
   --accent-color: #0d904f;
-  --translucent-accent-color: #0d904f44;
+  --translucent-accent-color: #0d904f33;
 }
 
 body.red {
   --accent-color: #ce2e20;
-  --translucent-accent-color: #ce2e2044;
+  --translucent-accent-color: #ce2e2033;
+}
+
+a {
+  color: color-mix(in oklab, var(--accent-color) 80%, black);
+}
+
+a:visited {
+  color: color-mix(in srgb, var(--accent-color) 40%, black);
 }
 
 /******** Main layout ********/
@@ -145,11 +153,11 @@ table.listing .cubing-icon {
   }
 
   a {
-    color: #669df5;
+    color: color-mix(in oklab, var(--accent-color) 10%, white);
   }
 
   a:visited {
-    color: #af73d5;
+    color: color-mix(in srgb, var(--accent-color) 40%, white);
   }
 }
 
