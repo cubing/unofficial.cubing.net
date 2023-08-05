@@ -18,7 +18,19 @@ rank,wcaID,name,average,best,attempt1,attempt2,attempt3,attempt4,attempt5
 …
 ```
 
+The rounds for a competition are stored in JSON files like [this](https://github.com/cubing/unofficial.cubing.net/blob/9dd479776e5cf6fd24f91ec9da83c070819bba46/data/competitions/CubingUSANationals2023/competition-info.json).
+
 Feel free to send a pull request or [file an issue](https://github.com/cubing/unofficial.cubing.net/issues) with data that can be converted into this format.
+
+## Project maintenance
+
+### Accepting contributions
+
+1. If the data is not in pull request format, create a pull request matching the format of other competitions.
+2. If you or the contributor were not directly involved in organizing the relevant competition results, verify with someone who was.
+3. Ensure there is a `competition-info.json` file and a `.csv` file corresponding to each described round.
+4. Check that CI is passing. For example, you can see that `make build` was able o generate all the competitions [here](https://github.com/cubing/unofficial.cubing.net/actions/runs/5767948616/job/15638362770).
+5. Approve the pull request, merge it, and ask Lucas to deploy (until we can [deploy from CI](https://github.com/cubing/unofficial.cubing.net/issues/7)).
 
 ### Adding a competition using the commandline
 
@@ -29,4 +41,4 @@ bun install
 bun run script/add-competition.ts -- SomeCompetition2023 fto magic
 ```
 
-Then add the appropriate CSV files.
+Then add the appropriate CSV files and push to a branch using `git` to make a pull request.
