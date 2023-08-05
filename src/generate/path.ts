@@ -49,7 +49,10 @@ export class Path {
 
   async writeDOM(node: Node): Promise<void> {
     const { DIST_SITE_FOLDER } = await import("./processing/folders"); // Avoid cyclic import
-    console.log("Writing:", relative(DIST_SITE_FOLDER.toString(), this.toString()));
+    console.log(
+      "Writing:",
+      relative(DIST_SITE_FOLDER.toString(), this.toString()),
+    );
     await writeFile(this.toString(), await serializeDOMNode(node));
   }
 

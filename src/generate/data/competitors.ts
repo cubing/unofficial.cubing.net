@@ -28,25 +28,29 @@ export class CompetitorIdentity {
   }
 }
 
-
 export class CompetitorOrTeamIdentity {
-  competitors: CompetitorIdentity[]
+  competitors: CompetitorIdentity[];
   constructor(csvColumns: CSVColumns, eventMetadata: EventMetadata) {
     if (eventMetadata.team) {
-      this.competitors = [new CompetitorIdentity(csvColumns.name1, csvColumns.wcaID1), new CompetitorIdentity(csvColumns.name2, csvColumns.wcaID2)]; // TODO: more than 2 team members? (Guildford challenge)
+      this.competitors = [
+        new CompetitorIdentity(csvColumns.name1, csvColumns.wcaID1),
+        new CompetitorIdentity(csvColumns.name2, csvColumns.wcaID2),
+      ]; // TODO: more than 2 team members? (Guildford challenge)
     } else {
-      this.competitors = [new CompetitorIdentity(csvColumns.name, csvColumns.wcaID)];
+      this.competitors = [
+        new CompetitorIdentity(csvColumns.name, csvColumns.wcaID),
+      ];
     }
   }
 
   //
-  toHTML():  DocumentFragment {
+  toHTML(): DocumentFragment {
     const fragment = sharedDocument.createDocumentFragment();
     fragment.appendChild(this.competitors[0].toHTML());
     for (const competitor of this.competitors.slice(1)) {
-      fragment.append(", ")
+      fragment.append(", ");
       fragment.appendChild(competitor.toHTML());
     }
-    return fragment
+    return fragment;
   }
 }
