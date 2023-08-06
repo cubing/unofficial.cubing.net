@@ -40,7 +40,7 @@ async function asyncSortBy<T, U>(
   );
 }
 
-// TODO: sort by date
+// Sorted by end date (oldest first)
 export async function allCompetitions(): Promise<Competition[]> {
   const competitionIDs = exclude_DSStore(await readdir("./data/competitions"));
   const competitions = competitionIDs.map(

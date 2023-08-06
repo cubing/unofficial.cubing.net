@@ -2,7 +2,7 @@ import { RootPage, allCompetitions } from "./processing/all-competitions";
 
 const rootPage = new RootPage();
 
-for (const competition of await allCompetitions()) {
+for (const competition of (await allCompetitions()).reverse()) {
   for await (const competitionEvents of competition.events()) {
     await competitionEvents.writeHTML();
   }
