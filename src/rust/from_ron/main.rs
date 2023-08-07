@@ -1,6 +1,8 @@
-// use sqlx::postgres::PgPoolOptions;
+use async_std::fs::create_dir_all;
+use serde::{Deserialize, Serialize};
+use std::{collections::HashMap, fmt::Display};
+
 use sqlx::mysql::{MySqlConnectOptions, MySqlPoolOptions};
-// etc.
 
 #[async_std::main]
 // or #[tokio::main]
@@ -20,6 +22,17 @@ async fn main() -> Result<(), sqlx::Error> {
         .connect_with(opts)
         .await?;
 
+    let event_id_map_file = std::fs::File::open("src/rust/from_ron/event_ids.json").unwrap();
+    let event_id_map: HashMap<String, EventIDInfo> =
+        serde_json::from_reader(event_id_map_file).unwrap();
+
+    let competition_info_sources_file =
+        std::fs::File::open("src/rust/from_ron/comps.json").unwrap();
+    let competition_info_sources: HashMap<String, CompetitionInfo> =
+        serde_json::from_reader(competition_info_sources_file).unwrap();
+
+    println!("{:?}", event_id_map);
+
     let competition_ids: Vec<String> = sqlx::query_as("SELECT DISTINCT id FROM Competitions")
         .fetch_all(&pool)
         .await?
@@ -27,27 +40,82 @@ async fn main() -> Result<(), sqlx::Error> {
         .map(|tuple: (String,)| tuple.0)
         .collect();
 
-    let mut wtr = csv::Writer::from_writer(io::stdout());
-
-    wtr.write_record(&["rank", "wcaID", "name", "population"])?;
-
-    for competition_id in competition_ids {
-        let events: Vec<(String, String)> =
+    for competition_id in &competition_ids {
+        let old_event_ids: Vec<String> =
             sqlx::query_as("SELECT DISTINCT eventId FROM Results WHERE competitionId = ?")
                 .bind(competition_id)
                 .fetch_all(&pool)
-                .await?;
+                .await?
+                .into_iter()
+                .map(|tuple: (String,)| tuple.0)
+                .collect();
 
-        for event in events {
-            println!("{}", competition_id);
-            let competition_results: Vec<(i64, String, String, String, String, i64, i64, i64, i64, i64, i64, i64)> =
-            sqlx::query_as("SELECT pos, personId, personName, roundId, formatId, value1, value2, value3, value4, value5, best, average FROM Results WHERE competitionId = ? AND eventId = ?")
-                .bind(competition_id)
-                .bind(event)
-                .fetch_all(&pool)
-                .await?;
-            for competition_result in competition_results {
-                println!("{:?}", competition_result.0)
+        let mut competitionInfo = CompetitionInfo {
+            id: competition_id.to_owned(),
+            full_name: competition_info_sources
+                .get(competition_id)
+                .unwrap()
+                .long_name
+                .to_owned(), // TODO,
+            rounds_by_event: vec![],
+        };
+
+        for old_event_id in &old_event_ids {
+            let event_id_info = match event_id_map.get(old_event_id) {
+                Some(event_id_info) => event_id_info,
+                None => continue,
+            };
+            let event_id = &event_id_info.id;
+
+            let round_datas: Vec<(String, String)> = sqlx::query_as(
+                "SELECT DISTINCT roundId, formatId FROM Results WHERE competitionId = ? AND eventId = ?",
+            )
+            .bind(competition_id)
+            .bind(old_event_id)
+            .fetch_all(&pool)
+            .await?;
+
+            let competititon_folder = format!("temp/data/competitions/{}", competition_id);
+
+            let mut round_index = 0;
+            for round_data in &round_datas {
+                round_index += 1;
+                create_dir_all(format!("{}/round-results", competititon_folder)).await?;
+                let file = std::fs::File::create(format!(
+                    "{}/round-results/{}-round{}.csv",
+                    competititon_folder, event_id, round_index
+                ))?;
+                let mut wtr = csv::Writer::from_writer(file);
+                wtr.write_record([
+                    "rank", "wcaID", "name", "attempt1", "attempt2", "attempt3", "attempt4",
+                    "attempt5", "best", "average",
+                ])
+                .unwrap(); // TODO
+
+                let round_results: Vec<(i64, String, String, i64, i64, i64, i64, i64, i64, i64)> =
+                sqlx::query_as("SELECT pos, personId, personName, value1, value2, value3, value4, value5, best, average FROM Results WHERE competitionId = ? AND eventId = ? AND roundId = ?")
+                    .bind(competition_id)
+                    .bind(old_event_id)
+                    .bind(&round_data.0)
+                    .fetch_all(&pool)
+                    .await?;
+                for round_result in round_results {
+                    wtr.write_record([
+                        round_result.0.to_string(),
+                        round_result.1,
+                        round_result.2,
+                        round_result.3.to_string(),
+                        round_result.4.to_string(),
+                        round_result.5.to_string(),
+                        round_result.6.to_string(),
+                        round_result.7.to_string(),
+                        round_result.8.to_string(),
+                        round_result.9.to_string(),
+                    ])
+                    .unwrap(); // TODO
+                }
+
+                wtr.flush()?;
             }
         }
     }
@@ -76,3 +144,88 @@ async fn main() -> Result<(), sqlx::Error> {
 //     #[ormx(default, set)]
 //     last_login: Option<NaiveDateTime>,
 // }
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+struct EventIDInfo {
+    id: String,
+    long_name: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+struct CompetitionRoundInfo {
+    round_format_i_d: String,
+    round_end_date: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+struct CompetitionInfo {
+    full_name: String,
+    rounds_by_event: Vec<CompetitionRoundInfo>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+struct CompetitionInfoSource {
+    id: String,
+    name: String,
+    date: String,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
+enum RoundFormat {
+    BestOf1,
+    MeanOf3,
+    BestOf3,
+    AverageOf5,
+}
+
+impl Display for RoundFormat {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "{}",
+            match self {
+                RoundFormat::BestOf1 => "bo1",
+                RoundFormat::MeanOf3 => "mo3",
+                RoundFormat::BestOf3 => "bo3",
+                RoundFormat::AverageOf5 => "avg5",
+            }
+        )
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct RoundInfo {
+    round_format_id: RoundFormat,
+    round_end_date: String,
+}
+
+// {
+//     "id": "CubingUSANationals2023",
+//     "fullName": "CubingUSA Nationals 2023",
+//     "roundsByEvent": {
+//       "fto": [
+//         {
+//           "roundFormatID": "avg5",
+//           "roundEndDate": "2023-08-12"
+//         }
+//       ],
+//       "333_team_bld": [
+//         {
+//           "roundFormatID": "bo3",
+//           "roundEndDate": "2023-08-12"
+//         }
+//       ],
+//       "magic": [
+//         {
+//           "roundFormatID": "avg5",
+//           "roundEndDate": "2023-08-14"
+//         }
+//       ]
+//     }
+//   }
