@@ -1,6 +1,10 @@
 use async_std::fs::create_dir_all;
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, fmt::Display};
+use std::{
+    collections::HashMap,
+    fmt::Display,
+    io::{BufWriter, Write},
+};
 
 use sqlx::mysql::{MySqlConnectOptions, MySqlPoolOptions};
 
@@ -28,7 +32,7 @@ async fn main() -> Result<(), sqlx::Error> {
 
     let competition_info_sources_file =
         std::fs::File::open("src/rust/from_ron/comps.json").unwrap();
-    let competition_info_sources: HashMap<String, CompetitionInfo> =
+    let competition_info_sources: HashMap<String, CompetitionInfoSource> =
         serde_json::from_reader(competition_info_sources_file).unwrap();
 
     println!("{:?}", event_id_map);
@@ -50,14 +54,17 @@ async fn main() -> Result<(), sqlx::Error> {
                 .map(|tuple: (String,)| tuple.0)
                 .collect();
 
-        let mut competitionInfo = CompetitionInfo {
+        print!("{:?}", competition_info_sources);
+        print!("{:?}", competition_id);
+
+        let mut competition_info = CompetitionInfo {
             id: competition_id.to_owned(),
             full_name: competition_info_sources
                 .get(competition_id)
                 .unwrap()
-                .long_name
+                .name
                 .to_owned(), // TODO,
-            rounds_by_event: vec![],
+            rounds_by_event: HashMap::new(),
         };
 
         for old_event_id in &old_event_ids {
@@ -67,6 +74,8 @@ async fn main() -> Result<(), sqlx::Error> {
             };
             let event_id = &event_id_info.id;
 
+            let mut competition_event_info: Vec<CompetitionRoundInfo> = vec![];
+
             let round_datas: Vec<(String, String)> = sqlx::query_as(
                 "SELECT DISTINCT roundId, formatId FROM Results WHERE competitionId = ? AND eventId = ?",
             )
@@ -75,10 +84,19 @@ async fn main() -> Result<(), sqlx::Error> {
             .fetch_all(&pool)
             .await?;
 
-            let competititon_folder = format!("temp/data/competitions/{}", competition_id);
+            let competititon_folder = format!("data/competitions/{}", competition_id);
 
             let mut round_index = 0;
             for round_data in &round_datas {
+                let round_format_id: RoundFormat = match round_data.1.as_str() {
+                    "a" => RoundFormat::AverageOf5,
+                    "m" => RoundFormat::MeanOf3,
+                    "1" => RoundFormat::BestOf1,
+                    "2" => RoundFormat::BestOf2,
+                    "3" => RoundFormat::BestOf3,
+                    _ => panic!("Unknown round format"),
+                };
+
                 round_index += 1;
                 create_dir_all(format!("{}/round-results", competititon_folder)).await?;
                 let file = std::fs::File::create(format!(
@@ -116,7 +134,24 @@ async fn main() -> Result<(), sqlx::Error> {
                 }
 
                 wtr.flush()?;
+                let competition_round_info = CompetitionRoundInfo {
+                    round_format_i_d: round_format_id.to_string(),
+                    round_end_date: "2001-01-01".to_owned(), // TODO
+                };
+                competition_event_info.push(competition_round_info);
             }
+            competition_info
+                .rounds_by_event
+                .insert(event_id.to_owned(), competition_event_info);
+            let mut writer = BufWriter::new(std::fs::File::create(format!(
+                "{},competition-info.json",
+                competititon_folder
+            ))?);
+            if competition_info.rounds_by_event.is_empty() {
+                continue;
+            }
+            serde_json::to_writer(&mut writer, &competition_info).unwrap();
+            writer.flush().unwrap();
         }
     }
 
@@ -162,14 +197,14 @@ struct CompetitionRoundInfo {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 struct CompetitionInfo {
+    id: String,
     full_name: String,
-    rounds_by_event: Vec<CompetitionRoundInfo>,
+    rounds_by_event: HashMap<String, Vec<CompetitionRoundInfo>>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 struct CompetitionInfoSource {
-    id: String,
     name: String,
     date: String,
 }
@@ -177,10 +212,11 @@ struct CompetitionInfoSource {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "camelCase")]
 enum RoundFormat {
-    BestOf1,
-    MeanOf3,
-    BestOf3,
     AverageOf5,
+    MeanOf3,
+    BestOf1,
+    BestOf2,
+    BestOf3,
 }
 
 impl Display for RoundFormat {
@@ -189,10 +225,11 @@ impl Display for RoundFormat {
             f,
             "{}",
             match self {
-                RoundFormat::BestOf1 => "bo1",
-                RoundFormat::MeanOf3 => "mo3",
-                RoundFormat::BestOf3 => "bo3",
                 RoundFormat::AverageOf5 => "avg5",
+                RoundFormat::MeanOf3 => "mo3",
+                RoundFormat::BestOf1 => "bo1",
+                RoundFormat::BestOf2 => "bo2",
+                RoundFormat::BestOf3 => "bo3",
             }
         )
     }

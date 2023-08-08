@@ -9,19 +9,22 @@ import {
 import { EventID, events } from "../src/generate/data/events";
 import { COMPETITON_SOURCE_DATA_FOLDER } from "../src/generate/processing/folders";
 
-const output: any[] = [];
+const output: Record<string, { name: string; date: string }> = {};
 for (const competitionID of [
   "AachenOpen2010",
   "AuroraSummer2009",
   "BelgianOpen2009",
   "BerkeleySpring2010",
+  "BrusselsSummerOpen2009",
   "ChalmersOpen2005",
   "ClermontOpen2008",
   "ClermontOpen2009",
   "CzechOpen2006",
   "DauphineOpen2009",
+  "DusseldorfOpen2010",
   "DutchOpen2005",
   "DutchOpen2006",
+  "EastGermanOpen2010",
   "Euro2006",
   "FinnishOpen2007",
   "FinnishOpen2008",
@@ -46,11 +49,11 @@ for (const competitionID of [
   "StanfordSpring2010",
   "Svekub2005",
   "Svekub2006",
+  "SwedishCubeday2005",
   "SwedishCubeDay2006",
   "SwedishCubeDay2007",
   "SwedishCubeDay2008",
   "SwedishCubeDay2009",
-  "SwedishCubeday2005",
   "SwedishOpen2005",
   "SwedishOpen2006",
   "SwedishOpen2008",
@@ -62,6 +65,7 @@ for (const competitionID of [
   "UtahSummer2010",
   "VasterasOpen2009",
   "Vastervik2008",
+  "VCUBESpiel2010",
   "WC2003",
   "WC2005",
   "WC2009",
@@ -88,8 +92,8 @@ for (const competitionID of [
       .querySelector('a[title="Add to calendar"]')!
       .parentElement!.textContent!.trim() +
     " // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended.";
-  const entry = { id: competitionID, name: fullName, date };
-  output.push(entry);
-  console.error(entry);
+  const entry = { name: fullName, date };
+  output[competitionID] = entry;
+  console.error(competitionID, entry);
 }
 console.log(JSON.stringify(output, null, " "));
