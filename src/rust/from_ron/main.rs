@@ -35,7 +35,7 @@ async fn main() -> Result<(), sqlx::Error> {
     let competition_info_sources: HashMap<String, CompetitionInfoSource> =
         serde_json::from_reader(competition_info_sources_file).unwrap();
 
-    println!("{:?}", event_id_map);
+    // println!("{:?}", event_id_map);
 
     let competition_ids: Vec<String> = sqlx::query_as("SELECT DISTINCT id FROM Competitions")
         .fetch_all(&pool)
@@ -54,8 +54,8 @@ async fn main() -> Result<(), sqlx::Error> {
                 .map(|tuple: (String,)| tuple.0)
                 .collect();
 
-        print!("{:?}", competition_info_sources);
-        print!("{:?}", competition_id);
+        // print!("{:?}", competition_info_sources);
+        println!("{:?}", competition_id);
 
         let mut competition_info = CompetitionInfo {
             id: competition_id.to_owned(),
@@ -66,6 +66,8 @@ async fn main() -> Result<(), sqlx::Error> {
                 .to_owned(), // TODO,
             rounds_by_event: HashMap::new(),
         };
+
+        let competition_folder = format!("data/competitions/{}", competition_id);
 
         for old_event_id in &old_event_ids {
             let event_id_info = match event_id_map.get(old_event_id) {
@@ -84,8 +86,6 @@ async fn main() -> Result<(), sqlx::Error> {
             .fetch_all(&pool)
             .await?;
 
-            let competititon_folder = format!("data/competitions/{}", competition_id);
-
             let mut round_index = 0;
             for round_data in &round_datas {
                 let round_format_id: RoundFormat = match round_data.1.as_str() {
@@ -98,10 +98,10 @@ async fn main() -> Result<(), sqlx::Error> {
                 };
 
                 round_index += 1;
-                create_dir_all(format!("{}/round-results", competititon_folder)).await?;
+                create_dir_all(format!("{}/round-results", competition_folder)).await?;
                 let file = std::fs::File::create(format!(
                     "{}/round-results/{}-round{}.csv",
-                    competititon_folder, event_id, round_index
+                    competition_folder, event_id, round_index
                 ))?;
                 let mut wtr = csv::Writer::from_writer(file);
                 wtr.write_record([
@@ -143,16 +143,17 @@ async fn main() -> Result<(), sqlx::Error> {
             competition_info
                 .rounds_by_event
                 .insert(event_id.to_owned(), competition_event_info);
-            let mut writer = BufWriter::new(std::fs::File::create(format!(
-                "{},competition-info.json",
-                competititon_folder
-            ))?);
-            if competition_info.rounds_by_event.is_empty() {
-                continue;
-            }
-            serde_json::to_writer(&mut writer, &competition_info).unwrap();
-            writer.flush().unwrap();
         }
+        if competition_info.rounds_by_event.is_empty() {
+            println!("Empty: {}", competition_id);
+            continue;
+        }
+        let mut writer = BufWriter::new(std::fs::File::create(format!(
+            "{}/competition-info.json",
+            competition_folder
+        ))?);
+        serde_json::to_writer(&mut writer, &competition_info).unwrap();
+        writer.flush().unwrap();
     }
 
     Ok(())

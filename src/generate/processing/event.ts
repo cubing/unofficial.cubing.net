@@ -5,7 +5,6 @@ import { eventPageTemplate } from "../template";
 import { CompetitionRound } from "./round";
 import type { Competition } from "./competition";
 import { CompetitionRoundInfo } from "../data/competiton";
-import { exit } from "node:process";
 
 export class CompetitionEvent {
   constructor(

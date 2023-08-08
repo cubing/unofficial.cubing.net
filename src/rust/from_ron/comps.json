@@ -1,4 +1,8 @@
 {
+ "AachenOpen2009": {
+  "name": "Aachen Open 2009",
+  "date": "Jan 10 - 11, 2009 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+ },
  "AachenOpen2010": {
   "name": "Aachen Open 2010",
   "date": "Jan 16 - 17, 2010 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
@@ -14,6 +18,10 @@
  "BerkeleySpring2010": {
   "name": "Berkeley Spring 2010",
   "date": "Apr 25, 2010 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+ },
+ "BrusselsSummerOpen2008": {
+  "name": "Brussels Summer Open 2008",
+  "date": "Sep 6 - 7, 2008 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
  },
  "BrusselsSummerOpen2009": {
   "name": "Brussels Summer Open 2009",
@@ -51,6 +59,10 @@
   "name": "Dutch Open 2006",
   "date": "Oct 14 - 15, 2006 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
  },
+ "DutchOpen2008": {
+  "name": "Dutch Open 2008",
+  "date": "Oct 18 - 19, 2008 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+ },
  "EastGermanOpen2010": {
   "name": "East German Open 2010",
   "date": "Aug 14 - 15, 2010 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
@@ -70,6 +82,10 @@
  "FinnishOpen2010": {
   "name": "Finnish Open 2010",
   "date": "Aug 28 - 29, 2010 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+ },
+ "GalantaOpen2009": {
+  "name": "Galanta Open 2009",
+  "date": "Jan 31 - Feb 1, 2009 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
  },
  "GaleriesLafayetteOpen2010": {
   "name": "Galeries Lafayette Open 2010",
@@ -94,6 +110,10 @@
  "HoustonOpen2009": {
   "name": "Houston Open 2009",
   "date": "Aug 1, 2009 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+ },
+ "HungarianOpen2008": {
+  "name": "Hungarian Open 2008",
+  "date": "Oct 25 - 26, 2008 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
  },
  "KanazawaOpen2008": {
   "name": "Kanazawa Open 2008",
@@ -183,9 +203,17 @@
   "name": "Swedish Open 2008",
   "date": "Sep 6 - 7, 2008 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
  },
+ "SwissOpen2009": {
+  "name": "Swiss Open 2009",
+  "date": "Jan 31 - Feb 1, 2009 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+ },
  "TampereOpen2008": {
   "name": "Tampere Open 2008",
   "date": "Oct 25, 2008 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
+ },
+ "TheHagueOpen2008": {
+  "name": "The Hague Open 2008",
+  "date": "Nov 29, 2008 // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended."
  },
  "TwinCities2009": {
   "name": "Twin Cities Cubing Classic 2009",
