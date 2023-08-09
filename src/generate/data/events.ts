@@ -43,14 +43,14 @@ export const events: Record<string, EventMetadata> = {
     fullName: "3x3x3 Mirror Blocks",
     team: false,
     // cubingIconClass: "333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
-    cubingIconClass: "333",
+    cubingIconClass: "event-333",
     cubingIconSkew: true, // TODO: https://github.com/cubing/icons/issues/102
   },
   "333_mirror_blocks_bld": {
     fullName: "3x3x3 Mirror Blocks Blindfolded",
     team: false,
     // cubingIconClass: "333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
-    cubingIconClass: "333",
+    cubingIconClass: "event-333",
     cubingIconSkew: true,
   },
   "333_no_inspection": {
