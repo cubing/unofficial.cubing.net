@@ -8,6 +8,7 @@ import {
 } from "../src/generate/data/competiton";
 import { EventID, events } from "../src/generate/data/events";
 import { COMPETITON_SOURCE_DATA_FOLDER } from "../src/generate/processing/folders";
+import { RoundFormatID } from "../src/generate/data/rounds";
 
 const args = argv.slice(2);
 const competitionID = args.splice(0, 1)[0];
@@ -43,7 +44,7 @@ for (const eventID of args) {
   }
   roundsByEvent[eventID] = [
     {
-      roundFormatID: eventMetadata.validRoundFormatIDs[0],
+      roundFormatID: RoundFormatID.AverageOf5,
       roundEndDate: date,
     },
   ];
