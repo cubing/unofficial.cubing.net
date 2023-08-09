@@ -1,35 +1,35 @@
 rank,wcaID,name,attempt1,attempt2,attempt3,attempt4,attempt5,best,average
-31,2009MUKD01,Pitsanu Mukdaprakorn,286.000,-2,-2,-2,-2,286.000,-2
-30,2006PIRZ01,Markus Pirzer,271.650,-2,-2,-2,-2,271.650,-2
-29,2008OMYO01,Sanae Koseki,245.960,-2,-2,-2,-2,245.960,-2
-28,2008MORE02,Hippolyte Moreau,230.130,-2,-2,-2,-2,230.130,-2
-27,2007BERN01,Balázs Bernát,203.930,-2,-2,-2,-2,203.930,-2
-26,2009BUIT01,Karsten Buitkamp,180.310,-2,-2,-2,-2,180.310,-2
-25,2007ORTR01,Raffael Ort,177.080,-2,-2,-2,-2,177.080,-2
-24,2006ORKE01,Róbert Örkényi,168.440,-2,-2,-2,-2,168.440,-2
-23,2009BRUS01,Berit Brüster,166.060,-2,-2,-2,-2,166.060,-2
-22,2007VALK01,Mats Valk,150.060,-2,-2,-2,-2,150.060,-2
-21,2005KOSE01,Fumiki Koseki,132.190,-2,-2,-2,-2,132.190,-2
-20,2007PERD01,Antoine Perdereau,118.650,-2,-2,-2,-2,118.650,-2
-19,2005KOCZ01,István Kocza,117.030,-2,-2,-2,-2,117.030,-2
-18,2005AKKE01,Erik Akkersdijk,115.250,-2,-2,-2,-2,115.250,-2
-17,2006MATH01,Jean-Louis Mathieu,114.900,-2,-2,-2,-2,114.900,-2
-16,2008MIHA01,Zalán Mihály,104.550,-2,-2,-2,-2,104.550,-2
-15,2006NISH01,Kentaro Nishi,100.500,-2,-2,-2,-2,100.500,-2
-14,2007PROV01,Frank Provoost,91.710,-2,-2,-2,-2,91.710,-2
-13,2005BATI01,Milán Baticz,85.150,-2,-2,-2,-2,85.150,-2
-12,2009BRUN01,Benjamin Brundzats,80.880,-2,-2,-2,-2,80.880,-2
-11,2009BRIL01,Franz Jedo Penullar Brillo,73.780,-2,-2,-2,-2,73.780,-2
-10,2009SANT01,Simone Santarsiero,68.900,-2,-2,-2,-2,68.900,-2
-9,2008BLOH02,Robin Blöhm,66.930,-2,-2,-2,-2,66.930,-2
-8,2008ZIMM01,Monika Zimmermann,64.190,-2,-2,-2,-2,64.190,-2
-7,2003AKIM01,Masayuki Akimoto,59.500,-2,-2,-2,-2,59.500,-2
-6,2004NAGY01,Olivér Nagy,56.470,-2,-2,-2,-2,56.470,-2
-5,2009JACK01,Sebastian Jack,55.470,-2,-2,-2,-2,55.470,-2
-4,2008HEJJ01,Norbert Héjja,53.060,-2,-2,-2,-2,53.060,-2
-3,2008PADL01,Piotr Michal Padlewski,43.560,-2,-2,-2,-2,43.560,-2
-2,2008SIMO02,Nicolò Simone,40.520,-2,-2,-2,-2,40.520,-2
 1,2009SILV01,Martin Silvestri,38.660,-2,-2,-2,-2,38.660,-2
+2,2008SIMO02,Nicolò Simone,40.520,-2,-2,-2,-2,40.520,-2
+3,2008PADL01,Piotr Michal Padlewski,43.560,-2,-2,-2,-2,43.560,-2
+4,2008HEJJ01,Norbert Héjja,53.060,-2,-2,-2,-2,53.060,-2
+5,2009JACK01,Sebastian Jack,55.470,-2,-2,-2,-2,55.470,-2
+6,2004NAGY01,Olivér Nagy,56.470,-2,-2,-2,-2,56.470,-2
+7,2003AKIM01,Masayuki Akimoto,59.500,-2,-2,-2,-2,59.500,-2
+8,2008ZIMM01,Monika Zimmermann,64.190,-2,-2,-2,-2,64.190,-2
+9,2008BLOH02,Robin Blöhm,66.930,-2,-2,-2,-2,66.930,-2
+10,2009SANT01,Simone Santarsiero,68.900,-2,-2,-2,-2,68.900,-2
+11,2009BRIL01,Franz Jedo Penullar Brillo,73.780,-2,-2,-2,-2,73.780,-2
+12,2009BRUN01,Benjamin Brundzats,80.880,-2,-2,-2,-2,80.880,-2
+13,2005BATI01,Milán Baticz,85.150,-2,-2,-2,-2,85.150,-2
+14,2007PROV01,Frank Provoost,91.710,-2,-2,-2,-2,91.710,-2
+15,2006NISH01,Kentaro Nishi,100.500,-2,-2,-2,-2,100.500,-2
+16,2008MIHA01,Zalán Mihály,104.550,-2,-2,-2,-2,104.550,-2
+17,2006MATH01,Jean-Louis Mathieu,114.900,-2,-2,-2,-2,114.900,-2
+18,2005AKKE01,Erik Akkersdijk,115.250,-2,-2,-2,-2,115.250,-2
+19,2005KOCZ01,István Kocza,117.030,-2,-2,-2,-2,117.030,-2
+20,2007PERD01,Antoine Perdereau,118.650,-2,-2,-2,-2,118.650,-2
+21,2005KOSE01,Fumiki Koseki,132.190,-2,-2,-2,-2,132.190,-2
+22,2007VALK01,Mats Valk,150.060,-2,-2,-2,-2,150.060,-2
+23,2009BRUS01,Berit Brüster,166.060,-2,-2,-2,-2,166.060,-2
+24,2006ORKE01,Róbert Örkényi,168.440,-2,-2,-2,-2,168.440,-2
+25,2007ORTR01,Raffael Ort,177.080,-2,-2,-2,-2,177.080,-2
+26,2009BUIT01,Karsten Buitkamp,180.310,-2,-2,-2,-2,180.310,-2
+27,2007BERN01,Balázs Bernát,203.930,-2,-2,-2,-2,203.930,-2
+28,2008MORE02,Hippolyte Moreau,230.130,-2,-2,-2,-2,230.130,-2
+29,2008OMYO01,Sanae Koseki,245.960,-2,-2,-2,-2,245.960,-2
+30,2006PIRZ01,Markus Pirzer,271.650,-2,-2,-2,-2,271.650,-2
+31,2009MUKD01,Pitsanu Mukdaprakorn,286.000,-2,-2,-2,-2,286.000,-2
 32,2008BARA01,Bence Barát,461.080,-2,-2,-2,-2,461.080,-2
 33,2008PROV01,Anja Provoost,600.000,-2,-2,-2,-2,600.000,-2
 34,2003VAND01,Lars Vandenbergh,-1,-2,-2,-2,-2,-1,-2

@@ -114,7 +114,7 @@ async fn main() -> Result<(), sqlx::Error> {
                 .unwrap(); // TODO
 
                 let round_results: Vec<(i64, String, String, i64, i64, i64, i64, i64, i64, i64)> =
-                sqlx::query_as("SELECT pos, personId, personName, value1, value2, value3, value4, value5, best, average FROM Results WHERE competitionId = ? AND eventId = ? AND roundId = ?")
+                sqlx::query_as("SELECT pos, personId, personName, value1, value2, value3, value4, value5, best, average FROM Results WHERE competitionId = ? AND eventId = ? AND roundId = ? ORDER BY pos")
                     .bind(competition_id)
                     .bind(old_event_id)
                     .bind(&round_data.0)
