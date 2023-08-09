@@ -37,14 +37,17 @@ async fn main() -> Result<(), sqlx::Error> {
 
     // println!("{:?}", event_id_map);
 
-    let competition_ids: Vec<String> = sqlx::query_as("SELECT DISTINCT id FROM Competitions")
-        .fetch_all(&pool)
-        .await?
-        .into_iter()
-        .map(|tuple: (String,)| tuple.0)
-        .collect();
+    let competition_entries: Vec<(String, u32, u32, u32)> =
+        sqlx::query_as("SELECT DISTINCT id, year, endMonth, endDay FROM Competitions")
+            .fetch_all(&pool)
+            .await?;
 
-    for competition_id in &competition_ids {
+    for competition_entry in &competition_entries {
+        let competition_id = &competition_entry.0;
+        let year = &competition_entry.1;
+        let end_month = &competition_entry.2;
+        let end_day = &competition_entry.3;
+
         let old_event_ids: Vec<String> =
             sqlx::query_as("SELECT DISTINCT eventId FROM Results WHERE competitionId = ?")
                 .bind(competition_id)
@@ -55,7 +58,7 @@ async fn main() -> Result<(), sqlx::Error> {
                 .collect();
 
         // print!("{:?}", competition_info_sources);
-        println!("{:?}", competition_id);
+        println!("{:?}", &competition_id);
 
         let mut competition_info = CompetitionInfo {
             id: competition_id.to_owned(),
@@ -136,7 +139,7 @@ async fn main() -> Result<(), sqlx::Error> {
                 wtr.flush()?;
                 let competition_round_info = CompetitionRoundInfo {
                     round_format_i_d: round_format_id.to_string(),
-                    round_end_date: "2001-01-01".to_owned(), // TODO
+                    round_end_date: format!("{}-{}-{}", year, end_month, end_day), // TODO
                 };
                 competition_event_info.push(competition_round_info);
             }
