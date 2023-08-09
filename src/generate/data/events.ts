@@ -121,10 +121,14 @@ export const events: Record<string, EventMetadata> = {
 
 export type EventID = keyof typeof events;
 
-export function addIconClasses(elem: HTMLElement, eventID: EventID): void {
+export function setCubingIconAttributes(
+  elem: HTMLElement,
+  eventID: EventID,
+): void {
   elem.classList.add("cubing-icon");
   elem.classList.add(events[eventID].cubingIconClass);
   if (events[eventID].cubingIconSkew) {
     elem.classList.add("skew");
   }
+  elem.title = events[eventID].fullName;
 }
