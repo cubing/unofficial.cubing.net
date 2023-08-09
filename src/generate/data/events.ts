@@ -50,13 +50,16 @@ export const events: Record<string, EventMetadata> = {
     fullName: "333_mirror_blocks",
     team: false,
     validRoundFormatIDs: [RoundFormatID.MeanOf3],
-    cubingIconClass: "333-mirror-blocks",
+    // cubingIconClass: "333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
+    cubingIconClass: "333",
+    cubingIconSkew: true, // TODO: https://github.com/cubing/icons/issues/102
   },
   "333_mirror_blocks_bld": {
     fullName: "333_mirror_blocks_bld",
     team: false,
     validRoundFormatIDs: [RoundFormatID.MeanOf3],
-    cubingIconClass: "333-mirror-blocks",
+    // cubingIconClass: "333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
+    cubingIconClass: "333",
     cubingIconSkew: true,
   },
   "333_no_inspection": {
@@ -118,7 +121,7 @@ export const events: Record<string, EventMetadata> = {
     fullName: "skewb",
     team: false,
     validRoundFormatIDs: [RoundFormatID.MeanOf3],
-    cubingIconClass: "unofficial-skewb",
+    cubingIconClass: "event-skewb",
   },
   snake: {
     fullName: "snake",
