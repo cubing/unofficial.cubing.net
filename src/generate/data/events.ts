@@ -3,7 +3,6 @@ import { RoundFormatID } from "./rounds";
 export type EventMetadata = {
   fullName: string;
   team?: boolean;
-  validRoundFormatIDs: RoundFormatID[]; // The first entry is taken as the default.
   cubingIconClass: string;
   cubingIconSkew?: boolean;
 };
@@ -12,44 +11,37 @@ export type EventMetadata = {
 export const events: Record<string, EventMetadata> = {
   fto: {
     fullName: "Face-Turning Octahedron (FTO)",
-    validRoundFormatIDs: [RoundFormatID.AverageOf5],
     cubingIconClass: "unofficial-fto",
   },
   magic: {
     fullName: "Magic",
-    validRoundFormatIDs: [RoundFormatID.AverageOf5],
     cubingIconClass: "event-magic",
   },
   "333_team_bld": {
     fullName: "3x3x3 Team Blindfolded",
     team: true,
-    validRoundFormatIDs: [RoundFormatID.BestOf3],
     cubingIconClass: "event-333bf", // TODO
     cubingIconSkew: true,
   },
   "222_bld": {
     fullName: "222_bld",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "unofficial-222bf",
   },
   "222_oh": {
     fullName: "222_oh",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-222",
     cubingIconSkew: true,
   },
   "333_match_the_scramble": {
     fullName: "333_match_the_scramble",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "unofficial-333mts",
   },
   "333_mirror_blocks": {
     fullName: "333_mirror_blocks",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     // cubingIconClass: "333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
     cubingIconClass: "333",
     cubingIconSkew: true, // TODO: https://github.com/cubing/icons/issues/102
@@ -57,7 +49,6 @@ export const events: Record<string, EventMetadata> = {
   "333_mirror_blocks_bld": {
     fullName: "333_mirror_blocks_bld",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     // cubingIconClass: "333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
     cubingIconClass: "333",
     cubingIconSkew: true,
@@ -65,75 +56,64 @@ export const events: Record<string, EventMetadata> = {
   "333_no_inspection": {
     fullName: "333_no_inspection",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-333",
     cubingIconSkew: true,
   },
   "333_siamese": {
     fullName: "333_siamese",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-333",
     cubingIconSkew: true,
   },
   "333_speed_bld": {
     fullName: "333_speed_bld",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-333bf",
     cubingIconSkew: true,
   },
   rubiks_360: {
     fullName: "rubiks_360",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-333",
     cubingIconSkew: true,
   },
   magic_oh: {
     fullName: "magic_oh",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-magic",
     cubingIconSkew: true,
   },
   rainbow_cube: {
     fullName: "rainbow_cube",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-skewb",
     cubingIconSkew: true,
   },
   relay_222_333_444: {
     fullName: "relay_222_333_444",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "unofficial-234relay",
   },
   relay_333_333_333: {
     fullName: "relay_333_333_333",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-333",
     cubingIconSkew: true,
   },
   skewb: {
     fullName: "skewb",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-skewb",
   },
   snake: {
     fullName: "snake",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-333",
     cubingIconSkew: true,
   },
   square1_bld: {
     fullName: "square1_bld",
     team: false,
-    validRoundFormatIDs: [RoundFormatID.MeanOf3],
     cubingIconClass: "event-sq1",
     cubingIconSkew: true,
   },
