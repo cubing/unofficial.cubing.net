@@ -122,13 +122,13 @@ async fn main() -> Result<(), sqlx::Error> {
                         round_result.0.to_string(),
                         round_result.1,
                         round_result.2,
-                        round_result.3.to_string(),
-                        round_result.4.to_string(),
-                        round_result.5.to_string(),
-                        round_result.6.to_string(),
-                        round_result.7.to_string(),
-                        round_result.8.to_string(),
-                        round_result.9.to_string(),
+                        format_time(&round_result.3.to_string()),
+                        format_time(&round_result.4.to_string()),
+                        format_time(&round_result.5.to_string()),
+                        format_time(&round_result.6.to_string()),
+                        format_time(&round_result.7.to_string()),
+                        format_time(&round_result.8.to_string()),
+                        format_time(&round_result.9.to_string()),
                     ])
                     .unwrap(); // TODO
                 }
@@ -157,6 +157,15 @@ async fn main() -> Result<(), sqlx::Error> {
     }
 
     Ok(())
+}
+
+fn format_time(time: &str) -> String {
+    match time {
+        "-1" => "-1".to_owned(),
+        "-2" => "-2".to_owned(),
+        "0" => "-2".to_owned(), // TODO
+        t => format!("{:.3}", t.parse::<f32>().unwrap() / 1000.0).to_owned(),
+    }
 }
 
 // #[derive(Debug, ormx::Table)]

@@ -10,6 +10,7 @@ export class AttemptResultTime {
   constructor(public resultTotalMs: number) {}
 
   public static fromString(s: string): AttemptResultTime {
+    console.log(s, s === -1, s === "-1");
     switch (s) {
       case "-1":
       case "DNF":
