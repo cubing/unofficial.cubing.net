@@ -25,29 +25,108 @@ export const events: Record<string, EventMetadata> = {
     validRoundFormatIDs: [RoundFormatID.BestOf3],
     cubingIconClass: "event-333bf", // TODO
   },
-  "222_bld": {fullName: "222_bld", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "222_oh": {fullName: "222_oh", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "333_match_the_scramble": {fullName: "333_match_the_scramble", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "333_mirror_blocks": {fullName: "333_mirror_blocks", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "333_mirror_blocks_bld": {fullName: "333_mirror_blocks_bld", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "333_no_inspection": {fullName: "333_no_inspection", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "333_siamese": {fullName: "333_siamese", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "333_speed_bld": {fullName: "333_speed_bld", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
+  "222_bld": {
+    fullName: "222_bld",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  "222_oh": {
+    fullName: "222_oh",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  "333_match_the_scramble": {
+    fullName: "333_match_the_scramble",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  "333_mirror_blocks": {
+    fullName: "333_mirror_blocks",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  "333_mirror_blocks_bld": {
+    fullName: "333_mirror_blocks_bld",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  "333_no_inspection": {
+    fullName: "333_no_inspection",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  "333_siamese": {
+    fullName: "333_siamese",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  "333_speed_bld": {
+    fullName: "333_speed_bld",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
   // "333_team_bld": {fullName: "333_team_bld", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "360": {fullName: "360", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
+  "360": {
+    fullName: "360",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
   // "fto": {fullName: "fto", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
   // "magic": {fullName: "magic", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "magic_oh": {fullName: "magic_oh", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "rainbow_cube": {fullName: "rainbow_cube", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "relay_222_333_444": {fullName: "relay_222_333_444", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "relay_333_333_333": {fullName: "relay_333_333_333", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "skewb": {fullName: "skewb", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "snake": {fullName: "snake", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
-  "sq1_bld": {fullName: "sq1_bld", team: false, validRoundFormatIDs: [RoundFormatID.MeanOf3], cubingIconClass: "unofficial-pyramorphix"},
+  magic_oh: {
+    fullName: "magic_oh",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  rainbow_cube: {
+    fullName: "rainbow_cube",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  relay_222_333_444: {
+    fullName: "relay_222_333_444",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  relay_333_333_333: {
+    fullName: "relay_333_333_333",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  skewb: {
+    fullName: "skewb",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  snake: {
+    fullName: "snake",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
+  square1_bld: {
+    fullName: "square1_bld",
+    team: false,
+    validRoundFormatIDs: [RoundFormatID.MeanOf3],
+    cubingIconClass: "unofficial-pyramorphix",
+  },
 };
 
 export type EventID = keyof typeof events;
-
 
 // "longName": "Relay — 2x2x2, 3x3x3, 4x4x4"
 // "longName": "Rubik's 360"
