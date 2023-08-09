@@ -1,0 +1,18 @@
+{
+  "id": "GuangzhouSummerVacation2011",
+  "fullName": "Guangzhou Summer Vacation 2011",
+  "roundsByEvent": {
+    "gear_cube": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "2011-07-31"
+      }
+    ],
+    "skewb": [
+      {
+        "roundFormatID": "avg5",
+        "roundEndDate": "2011-07-31"
+      }
+    ]
+  }
+}

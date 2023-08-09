@@ -117,6 +117,12 @@ export const events: Record<string, EventMetadata> = {
     cubingIconClass: "event-sq1",
     cubingIconSkew: true,
   },
+  gear_cube: {
+    fullName: "Gear Cube",
+    team: false,
+    cubingIconClass: "event-333",
+    cubingIconSkew: true,
+  },
 };
 
 export type EventID = keyof typeof events;
