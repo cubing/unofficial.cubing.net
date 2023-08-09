@@ -3,7 +3,7 @@ import {
   type CompetitionInfo,
   type EndDate,
 } from "../data/competiton";
-import { events } from "../data/events";
+import { addIconClasses, events } from "../data/events";
 import { sharedDocument } from "../jsdom";
 import { Path } from "../path";
 import { competitionPageTemplate } from "../template";
@@ -79,8 +79,7 @@ export class Competition {
       const eventMetadata = events[eventID];
 
       const iconElement = div.appendChild(sharedDocument.createElement("span"));
-      iconElement.classList.add("cubing-icon");
-      iconElement.classList.add(eventMetadata.cubingIconClass);
+      addIconClasses(iconElement, eventID);
 
       div.append(" ");
 

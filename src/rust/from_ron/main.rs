@@ -164,7 +164,7 @@ fn format_time(time: &str) -> String {
         "-1" => "-1".to_owned(),
         "-2" => "-2".to_owned(),
         "0" => "-2".to_owned(), // TODO
-        t => format!("{:.3}", t.parse::<f32>().unwrap() / 1000.0).to_owned(),
+        t => format!("{:.3}", t.parse::<f32>().unwrap() / 100.0).to_owned(),
     }
 }
 

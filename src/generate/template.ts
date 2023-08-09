@@ -17,10 +17,13 @@ class PageTemplate {
   }
 
   async apply<T extends Node>(
-    fields: Record<string, string>,
+    fields: Record<string, string | null>,
   ): Promise<Document> {
     const document = (await this.templateDocument).cloneNode(true) as Document;
     for (const [key, value] of Object.entries(fields)) {
+      if (value === null) {
+        continue;
+      }
       {
         const className = `template-class-${key}`;
         for (const elem of document.getElementsByClassName(className)) {

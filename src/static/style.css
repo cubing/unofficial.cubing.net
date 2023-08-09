@@ -123,6 +123,7 @@ table.listing td {
   border: 1px solid var(--text-color);
   padding: 0.25em 0.5em;
   display: flex;
+  gap: 0.25em;
   align-items: center;
 }
 
@@ -316,9 +317,14 @@ table.results tbody td:nth-child(9) {
 }
 
 .skew {
+  scale: 0.8;
   transform: rotate(45deg);
   display: inline-block;
-  margin-right: 0.5em;
   font-size: 1em;
   vertical-align: 0%;
+}
+
+.header .cubing-icon.skew {
+  margin-right: 0.5em;
+  scale: 1;
 }
