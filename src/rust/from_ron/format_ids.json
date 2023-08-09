@@ -1,0 +1,74 @@
+{
+  "234": {
+    "id": "relay_222_333_444",
+    "long_name": "Relay — 2x2x2, 3x3x3, 4x4x4"
+  },
+  "360": {
+    "id": "360",
+    "long_name": "Rubik's 360"
+  },
+  "666": {
+    "id": "666",
+    "long_name": "6x6x6 Cube"
+  },
+  "777": {
+    "id": "777",
+    "long_name": "7x7x7 Cube"
+  },
+  "rainb": {
+    "id": "rainbow_cube",
+    "long_name": "Rainbow Cube"
+  },
+  "skewb": {
+    "id": "skewb",
+    "long_name": "Skewb"
+  },
+  "333si": {
+    "id": "333_siamese",
+    "long_name": "3x3x3 Siamese Cube"
+  },
+  "snake": {
+    "id": "snake",
+    "long_name": "Snake"
+  },
+  "mirbl": {
+    "id": "333_mirror_blocks",
+    "long_name": "3x3x3 Mirror Blocks"
+  },
+  "333ni": {
+    "id": "333_no_inspection",
+    "long_name": "3x3x3 No inspection"
+  },
+  "333r3": {
+    "id": "relay_333_333_333",
+    "long_name": "Relay — Three 3x3x3 Cubes"
+  },
+  "333sbf": {
+    "id": "333_speed_bld",
+    "long_name": "3x3x3 Speed Blindfolded"
+  },
+  "3sc": {
+    "id": "333_match_the_scramble",
+    "long_name": "3x3x3 Match the Scramble"
+  },
+  "222oh": {
+    "id": "222_oh",
+    "long_name": "2x2x2 One-Handed"
+  },
+  "magico": {
+    "id": "magic_oh",
+    "long_name": "Magic One-Handed"
+  },
+  "222bf": {
+    "id": "222_bld",
+    "long_name": "2x2x2 Blindfolded"
+  },
+  "sq1bf": {
+    "id": "sq1_bld",
+    "long_name": "Square-1 Blindfolded"
+  },
+  "mirbbf": {
+    "id": "333_mirror_blocks_bld",
+    "long_name": "3x3x3 Mirror Blocks Blindfolded"
+  }
+}

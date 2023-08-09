@@ -1,0 +1,6 @@
+rank,wcaID,name,attempt1,attempt2,attempt3,attempt4,attempt5,best,average
+1,2007LAIR01,Johannes Laire,3.180,4.650,3.500,2.660,2.840,2.660,3.170
+2,2007LAIR02,Samuel Laire,6.590,5.640,4.860,6.870,8.420,4.860,6.370
+3,2007TIIN01,Teemu Tiinanen,6.660,7.050,5.740,7.860,16.510,5.740,7.190
+4,2005GUST02,Tommy Gustavsson,14.830,14.280,13.030,28.520,19.310,13.030,16.140
+5,2005GUST01,Kenneth Gustavsson,-1,-1,15.850,16.280,19.130,15.850,-1
