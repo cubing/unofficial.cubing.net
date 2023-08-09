@@ -320,11 +320,11 @@ table.results tbody td:nth-child(9) {
   scale: 0.8;
   transform: rotate(45deg);
   display: inline-block;
-  font-size: 1em;
   vertical-align: 0%;
 }
 
 .header .cubing-icon.skew {
   margin-right: 0.5em;
   scale: 1;
+  font-size: 1em;
 }
