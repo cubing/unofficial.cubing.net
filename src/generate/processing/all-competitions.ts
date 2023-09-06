@@ -57,7 +57,7 @@ export async function allCompetitions(): Promise<Competition[]> {
 export class RootPage {
   outputDocument = rootPageTemplate.apply({});
   competitionListElem = (async () =>
-    // rome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     (await this.outputDocument).getElementById("competition-list")!)();
 
   async addCompetition(competition: Competition) {

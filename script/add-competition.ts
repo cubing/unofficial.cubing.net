@@ -30,7 +30,7 @@ if (!fullName) {
 }
 console.log(`Found competition at: ${competitionWCAURL}`);
 const date =
-  // rome-ignore lint/style/noNonNullAssertion: <explanation>
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   html
     .querySelector('a[title="Add to calendar"]')!
     .parentElement!.textContent!.trim() +

@@ -28,11 +28,11 @@ class CompetitorOrTeamRoundResult {
       tr.appendChild(doc.createElement("td")).textContent =
         this.bestResult.toString();
       tr.appendChild(doc.createElement("td")).textContent =
-        // rome-ignore lint/style/noNonNullAssertion: TODO: make invalid states unrepresentable
+        // biome-ignore lint/style/noNonNullAssertion: TODO: make invalid states unrepresentable
         this.averageResult!.toString();
     } else {
       tr.appendChild(doc.createElement("td")).textContent =
-        // rome-ignore lint/style/noNonNullAssertion: TODO: make invalid states unrepresentable
+        // biome-ignore lint/style/noNonNullAssertion: TODO: make invalid states unrepresentable
         this.averageResult!.toString();
       tr.appendChild(doc.createElement("td")).textContent =
         this.bestResult.toString();

@@ -26,7 +26,7 @@ export class Competition {
 
   infoCached: Promise<CompetitionInfo> | undefined;
   async info(): Promise<CompetitionInfo> {
-    // rome-ignore lint/suspicious/noAssignInExpressions: Caching pattern
+    // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern
     return (this.infoCached ??= (async () => {
       const competitionInfo: CompetitionInfo = await (
         await this.dataFolder()
@@ -67,7 +67,7 @@ export class Competition {
 
     // for await (const competitionRoundResult of this.rounds()) {} // TODO
 
-    // rome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     const eventListElem = outputDocument.querySelector("#event-list")!;
 
     // Note: `in`!
