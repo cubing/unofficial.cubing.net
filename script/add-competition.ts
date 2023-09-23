@@ -1,14 +1,14 @@
 #!/usr/bin/env bun
 
 import { argv, exit } from "node:process";
-import { sharedDOMParser } from "../src/generate/jsdom";
 import {
   CompetitionInfo,
   CompetitionRoundInfo,
 } from "../src/generate/data/competiton";
-import { EventID, events } from "../src/generate/data/events";
-import { COMPETITON_SOURCE_DATA_FOLDER } from "../src/generate/processing/folders";
+import { events, EventID } from "../src/generate/data/events";
 import { RoundFormatID } from "../src/generate/data/rounds";
+import { sharedDOMParser } from "../src/generate/jsdom";
+import { COMPETITON_SOURCE_DATA_FOLDER } from "../src/generate/processing/folders";
 
 const args = argv.slice(2);
 const competitionID = args.splice(0, 1)[0];
@@ -31,10 +31,9 @@ if (!fullName) {
 console.log(`Found competition at: ${competitionWCAURL}`);
 const date =
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  html
+  `${html
     .querySelector('a[title="Add to calendar"]')!
-    .parentElement!.textContent!.trim() +
-  " // change this to the format `YYYY-MM-DD`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended.";
+    .parentElement!.textContent!.trim()} // change this to the format \`YYYY-MM-DD\`! For a multi-day comp, pick the final day of the competition if unsure on which date the specific event ended.`;
 
 const roundsByEvent: Record<EventID, CompetitionRoundInfo[]> = {};
 for (const eventID of args) {

@@ -1,9 +1,9 @@
 import {
-  compareEndDates,
   type CompetitionInfo,
   type EndDate,
+  compareEndDates,
 } from "../data/competiton";
-import { setCubingIconAttributes, events } from "../data/events";
+import { events, setCubingIconAttributes } from "../data/events";
 import { sharedDocument } from "../jsdom";
 import { Path } from "../path";
 import { competitionPageTemplate } from "../template";

@@ -19,15 +19,15 @@ setup:
 
 .PHONY: lint
 lint:
-	bun x rome check ./script/ ./src/
+	bun x biome check ./script/ ./src/
 
 .PHONY: lint-ci
 lint-ci:
-	bun x rome ci ./script/ ./src/
+	bun x biome ci ./script/ ./src/
 
 .PHONY: format
 format:
-	bun x rome format --write ./script/ ./src/
+	bun x biome format --write ./script/ ./src/
 
 .PHONY: clean
 clean:

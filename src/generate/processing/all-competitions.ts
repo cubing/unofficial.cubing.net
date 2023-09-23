@@ -1,11 +1,11 @@
 import { readdir } from "node:fs/promises";
-import { rootPageTemplate } from "../template";
-import { Competition } from "./competition";
+import { compareEndDates } from "../data/competiton";
+import { events, setCubingIconAttributes } from "../data/events";
 import { sharedDocument } from "../jsdom";
 import { Path } from "../path";
-import { compareEndDates } from "../data/competiton";
+import { rootPageTemplate } from "../template";
+import { Competition } from "./competition";
 import { DIST_SITE_FOLDER } from "./folders";
-import { setCubingIconAttributes, events } from "../data/events";
 
 // *shakes fist at Apple*
 function exclude_DSStore(paths: string[]): string[] {

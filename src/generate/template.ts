@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
-import { sharedDOMParser } from "./jsdom";
 import { dirname, join } from "node:path";
+import { sharedDOMParser } from "./jsdom";
 import { Path } from "./path";
 
 const TEMPLATES_FOLDER = Path.fromProjectRootRelative("./src/templates");

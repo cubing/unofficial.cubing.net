@@ -1,10 +1,10 @@
-import { EventID, EventMetadata, events } from "../data/events";
+import { CompetitionRoundInfo } from "../data/competiton";
+import { events, EventID, EventMetadata } from "../data/events";
 import { roundFormats } from "../data/rounds";
 import { Path } from "../path";
 import { eventPageTemplate } from "../template";
-import { CompetitionRound } from "./round";
 import type { Competition } from "./competition";
-import { CompetitionRoundInfo } from "../data/competiton";
+import { CompetitionRound } from "./round";
 
 export class CompetitionEvent {
   constructor(

@@ -1,4 +1,4 @@
-import { stat, readdir } from "node:fs/promises";
+import { readdir, stat } from "node:fs/promises";
 import { join } from "node:path";
 
 export async function listFiles(

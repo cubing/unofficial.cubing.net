@@ -1,6 +1,6 @@
-import { parse as csvParse } from "csv-parse/browser/esm/sync";
 import { mkdir, open, readFile, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
+import { parse as csvParse } from "csv-parse/browser/esm/sync";
 import { serializeDOMNode } from "./jsdom";
 
 const PROJECT_ROOT_FOLDER = resolve(

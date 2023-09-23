@@ -1,7 +1,7 @@
 import { exit } from "node:process";
+import { sharedDocument } from "../jsdom";
 import { CSVColumns } from "./csv";
 import { EventMetadata } from "./events";
-import { sharedDocument } from "../jsdom";
 
 const WCAIDRegex = /^\d{4}[A-Z]{4}\d{2}$/;
 

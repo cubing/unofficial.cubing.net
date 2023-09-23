@@ -1,12 +1,12 @@
 import { exit } from "node:process";
 import { AttemptResultTime } from "../data/attempts";
 import { CompetitionRoundInfo } from "../data/competiton";
-import { EventID, EventMetadata, events } from "../data/events";
+import { CompetitorOrTeamIdentity } from "../data/competitors";
+import { CSVColumns } from "../data/csv";
+import { events, EventID, EventMetadata } from "../data/events";
 import { RoundFormatInfo, roundFormats } from "../data/rounds";
 import { sharedDocument } from "../jsdom";
-import { CSVColumns } from "../data/csv";
 import { CompetitionEvent } from "./event";
-import { CompetitorOrTeamIdentity } from "../data/competitors";
 
 class CompetitorOrTeamRoundResult {
   constructor(
