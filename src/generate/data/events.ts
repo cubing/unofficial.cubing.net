@@ -20,8 +20,7 @@ export const events: Record<string, EventMetadata> = {
   "333_team_bld": {
     fullName: "3x3x3 Team Blindfolded",
     team: true,
-    cubingIconClass: "event-333bf", // TODO
-    cubingIconSkew: true,
+    cubingIconClass: "unofficial-333_team_bld", // TODO
   },
   "222_bld": {
     fullName: "2x2x2 Blindfolded",
@@ -42,12 +41,12 @@ export const events: Record<string, EventMetadata> = {
   "333_mirror_blocks": {
     fullName: "3x3x3 Mirror Blocks",
     team: false,
-    cubingIconClass: "unofficial-333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
+    cubingIconClass: "unofficial-333_mirror_blocks", // TODO: https://github.com/cubing/icons/issues/102
   },
   "333_mirror_blocks_bld": {
     fullName: "3x3x3 Mirror Blocks Blindfolded",
     team: false,
-    cubingIconClass: "unofficial-333-mirror-blocks", // TODO: https://github.com/cubing/icons/issues/102
+    cubingIconClass: "unofficial-333_mirror_blocks", // TODO: https://github.com/cubing/icons/issues/102
     cubingIconSkew: true,
   },
   "333_no_inspection": {
