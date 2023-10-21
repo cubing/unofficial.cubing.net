@@ -1,7 +1,7 @@
 rank,wcaID,name,attempt1,attempt2,attempt3,attempt4,attempt5,best,average
 1,2009SILV01,Martin Silvestri,38.660,-2,-2,-2,-2,38.660,-2
 2,2008SIMO02,Nicolò Simone,40.520,-2,-2,-2,-2,40.520,-2
-3,2008PADL01,Piotr Michal Padlewski,43.560,-2,-2,-2,-2,43.560,-2
+3,2008PADL01,Piotr Michał Padlewski,43.560,-2,-2,-2,-2,43.560,-2
 4,2008HEJJ01,Norbert Héjja,53.060,-2,-2,-2,-2,53.060,-2
 5,2009JACK01,Sebastian Jack,55.470,-2,-2,-2,-2,55.470,-2
 6,2004NAGY01,Olivér Nagy,56.470,-2,-2,-2,-2,56.470,-2
@@ -27,7 +27,7 @@ rank,wcaID,name,attempt1,attempt2,attempt3,attempt4,attempt5,best,average
 26,2009BUIT01,Karsten Buitkamp,180.310,-2,-2,-2,-2,180.310,-2
 27,2007BERN01,Balázs Bernát,203.930,-2,-2,-2,-2,203.930,-2
 28,2008MORE02,Hippolyte Moreau,230.130,-2,-2,-2,-2,230.130,-2
-29,2008OMYO01,Sanae Koseki,245.960,-2,-2,-2,-2,245.960,-2
+29,2008OMYO01,Sanae Yamashita,245.960,-2,-2,-2,-2,245.960,-2
 30,2006PIRZ01,Markus Pirzer,271.650,-2,-2,-2,-2,271.650,-2
 31,2009MUKD01,Pitsanu Mukdaprakorn,286.000,-2,-2,-2,-2,286.000,-2
 32,2008BARA01,Bence Barát,461.080,-2,-2,-2,-2,461.080,-2
@@ -35,5 +35,5 @@ rank,wcaID,name,attempt1,attempt2,attempt3,attempt4,attempt5,best,average
 34,2003VAND01,Lars Vandenbergh,-1,-2,-2,-2,-2,-1,-2
 34,2009PAES01,Caroline Paeßens,-1,-2,-2,-2,-2,-1,-2
 34,2008BERE01,Brúnó Bereczki,-1,-2,-2,-2,-2,-1,-2
-34,2007CICH01,Lukasz Cichecki,-1,-2,-2,-2,-2,-1,-2
+34,2007CICH01,Łukasz Cichecki,-1,-2,-2,-2,-2,-1,-2
 34,2007COHE01,Dan Cohen,-1,-2,-2,-2,-2,-1,-2
