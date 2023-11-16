@@ -1,18 +1,14 @@
 {
   "formatter": {
     "indentStyle": "space",
-    "indentSize": 2,
-    "ignore": [
-      "/node_modules"
-    ]
+    "indentWidth": 2,
+    "ignore": ["/node_modules"]
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true
     },
-    "ignore": [
-      "/node_modules"
-    ]
+    "ignore": ["/node_modules"]
   }
 }

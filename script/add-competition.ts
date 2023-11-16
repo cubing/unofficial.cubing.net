@@ -55,9 +55,10 @@ const competitionInfo: CompetitionInfo = {
   roundsByEvent,
 };
 
-const outputDataFolder = await COMPETITON_SOURCE_DATA_FOLDER.getRelative(
-  competitionID,
-).ensureFolderExists();
+const outputDataFolder =
+  await COMPETITON_SOURCE_DATA_FOLDER.getRelative(
+    competitionID,
+  ).ensureFolderExists();
 const outputFilePath = outputDataFolder.getRelative("competition-info.json");
 
 const roundResultFolder = await outputDataFolder
